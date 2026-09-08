@@ -17,6 +17,9 @@ users = user_db["users"]
 credentials = credentials_db["credentials"]
 profiles = profile_db["profiles"]
 
+credentials.create_index("email", unique=True)
+credentials.create_index("phoneNo", unique=True)
+
 def check_collections():
     required = {
         "user_db": (user_db, "users"),

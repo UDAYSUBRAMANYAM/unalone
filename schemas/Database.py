@@ -35,7 +35,7 @@ class credentialDBschema(BaseModel):
     _id: ObjectId
     user_id : ObjectId 
     email : Optional[EmailStr] = None
-    password:str
+    password: str
     phoneNo : Optional[E164Phone] = None
 
 class profileDBschema(BaseModel):

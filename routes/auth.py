@@ -5,10 +5,11 @@ from fastapi import APIRouter,HTTPException
 from schemas.auth import loginSchema,signUpSchema
 from schemas.Database import usersDBschema,credentialDBschema,profileDBschema
 from security.security import hash_password,verify_password
-from config import users,credentials,profiles
+from config import client, users, credentials, profiles
 # pyrefly: ignore [missing-import]
 from bson import ObjectId
-
+# pyrefly: ignore [missing-import]
+from pymongo.errors import DuplicateKeyError
 
 router = APIRouter(prefix="/auth", tags=["Auth"])
 from security.auth_service import create_access_token
@@ -42,18 +43,34 @@ def signup(data:signUpSchema):
         username = data.username,
     )
     try:
-        users.insert_one(user.model_dump()) 
-        credentials.insert_one(credential.model_dump()) 
-        profiles.insert_one(profile.model_dump())
-        access_token = create_access_token(str(curr_id))
+        with client.start_session() as session:
+            with session.start_transaction():
+                users.insert_one(user.model_dump(),session=session) 
+                credentials.insert_one(credential.model_dump(),session=session) 
+                profiles.insert_one(profile.model_dump(),session=session)
+        access_token = create_access_token(str(curr_id),)
         return {
             "access_token": access_token,
             "token_type": "bearer"
         }
+    except DuplicateKeyError as e:
+        raise HTTPException(status_code=400,detail=f"Account already exist {e}")
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Signup Failed {e}")
 
-# @router.post("/login")
-# def login(data:loginSchema):
-#     if credentials.find_one(data.email) or credentials.find_one(data.phoneNo):
-        
+@router.post("/login")
+def login(data:loginSchema):
+    if data.email:
+        credential = credentials.find_one({"email": data.email})
+    else:
+        credential = credentials.find_one({"phoneNo": data.phoneNo})
+    if not credential:
+        raise HTTPException(status_code=401, detail="Invalid Credentials")
+    if verify_password(data.password, credential["password"]):
+        access_token = create_access_token(str(credential["user_id"]))
+        return {
+            "access_token": access_token,
+            "token_type": "bearer"
+        }
+    else:
+        raise HTTPException(status_code=401, detail="Invalid credentials")
