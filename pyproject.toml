@@ -1,0 +1,27 @@
+[project]
+name = "lokol"
+version = "0.0.1"
+description = ""
+authors = [
+    {name = "Your Name",email = "you@example.com"}
+]
+requires-python = ">=3.14"
+dependencies = [
+    "fastapi (>=0.141.1,<0.142.0)",
+    "uvicorn (>=0.52.4,<0.53.0)",
+    "pymongo[srv] (>=4.18.0,<5.0.0)",
+    "pydantic[email] (>=2.13.5,<3.0.0)",
+    "getenv (>=0.2.0,<0.3.0)",
+    "pwdlib (>=0.3.1,<0.4.0)",
+    "pyjwt (>=2.13.0,<3.0.0)",
+    "python-jose[cryptography] (>=3.5.0,<4.0.0)",
+    "python-multipart (>=0.0.32,<0.0.33)",
+    "pydantic-extra-types (>=2.11.1,<3.0.0)",
+    "phonenumbers (>=9.0.38,<10.0.0)",
+    "passlib[bcrypt] (>=1.7.4,<2.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
