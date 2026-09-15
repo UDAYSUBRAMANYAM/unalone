@@ -53,3 +53,15 @@ class profileDBschema(BaseModel):
     hometown : Optional[str] = None
     ethinicity : Optional[str] = None
     gender_orientation : list = Field(default_factory=list)
+
+class ProfileUpdateSchema(BaseModel):
+    username: Optional[str] = None
+    address: Optional[str] = None
+    dob: Optional[datetime] = None
+    gender: Optional[Gender] = None
+    gender_of_intrest: Optional[list] = None
+    about: Optional[str] = None
+    profile_pic: Optional[HttpUrl] = None
+    hometown: Optional[str] = None
+    ethinicity: Optional[str] = None
+    gender_orientation: Optional[list] = None

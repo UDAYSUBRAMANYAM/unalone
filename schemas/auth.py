@@ -17,4 +17,7 @@ class loginSchema(BaseModel):
     email:Optional[EmailStr] = None
     phoneNo:Optional[E164Phone] = None
     password:str
-    
+class tokenSchema(BaseModel):
+    access_token: str
+    refresh_token:Optional[str] = None
+    token_type: str = "bearer"

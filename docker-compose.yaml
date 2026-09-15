@@ -1,0 +1,14 @@
+services:
+  backend:
+    build: .
+    env_file: .env
+    container_name: lokal-backend
+    ports:
+      - "8000:8000"
+    depends_on:
+      - redis
+  redis:
+    image: redis:8-alpine
+    container_name: redis-lokal
+    ports:
+      - "6379:6379"

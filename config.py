@@ -6,7 +6,8 @@ from dotenv import load_dotenv
 load_dotenv()
 
 uri = os.getenv("mongourl")
-# print(uri)
+if not uri:
+    raise ValueError("Environment variable 'mongourl' is missing. Please set it in your .env file or environment.")
 client = MongoClient(uri)
 
 user_db = client["user_db"]
