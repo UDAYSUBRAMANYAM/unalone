@@ -2,12 +2,13 @@
 from fastapi import APIRouter, WebSocket
 # pyrefly: ignore [missing-import]
 from fastapi import Depends, WebSocketDisconnect
+
 from config_redis import redis_client
 from security.auth_service import get_current_user_ws
 
 router = APIRouter(tags=["Location"])
 
-LOCATION_TTL = 60
+LOCATION_TTL = 10
 
 
 @router.websocket("/ws/location/me")
@@ -26,7 +27,7 @@ async def location_websocket(
             lat = data["lat"]
             lng = data["lng"]
 
-            redis_client.hset(
+            await redis_client.hset(
                 location_key,
                 mapping={
                     "lat": lat,
@@ -34,7 +35,7 @@ async def location_websocket(
                 },
             )
 
-            redis_client.expire(
+            await redis_client.expire(
                 location_key,
                 LOCATION_TTL,
             )
@@ -47,4 +48,4 @@ async def location_websocket(
         pass
 
     finally:
-        redis_client.delete(location_key)
+        await redis_client.delete(location_key)

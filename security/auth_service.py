@@ -8,13 +8,16 @@ from datetime import timezone
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 # pyrefly: ignore [missing-import]
 from fastapi import Depends, HTTPException
+# pyrefly: ignore [missing-import]
+from dotenv import load_dotenv
 
 # pyrefly: ignore [missing-import]
 from fastapi import WebSocket, WebSocketException, status
 oauth2_scheme = HTTPBearer()
+load_dotenv()
 
 SECRET_KEY = os.getenv("SECRET_KEY")
-ALGORITHM = os.getenv("ALGORITHM")
+ALGORITHM = os.getenv("ALGORITHM", "HS256")
 
 ACCESS_TOKEN_EXPIRE_MINUTES = 60 * 24 
 REFRESH_TOKEN_EXPIRE_DAYS = 7          
