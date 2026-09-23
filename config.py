@@ -1,7 +1,5 @@
-# pyrefly: ignore [missing-import]
 from pymongo import MongoClient
 import os
-# pyrefly: ignore [missing-import]
 from dotenv import load_dotenv
 load_dotenv()
 

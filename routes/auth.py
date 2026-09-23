@@ -1,22 +1,17 @@
-# pyrefly: ignore [missing-import]
 from security.auth_service import decode_token
 from security.auth_service import (
     create_access_token,
     create_refresh_token
 )
 from datetime import timezone,datetime
-# pyrefly: ignore [missing-import]
 from fastapi import APIRouter,HTTPException,Depends
 from schemas.auth import loginSchema,signUpSchema,tokenSchema
 from schemas.Database import usersDBschema,credentialDBschema,profileDBschema
 from security.security import hash_password,verify_password
-# pyrefly: ignore [missing-import]
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 
 from config import client, users, credentials, profiles
-# pyrefly: ignore [missing-import]
 from bson import ObjectId
-# pyrefly: ignore [missing-import]
 from pymongo.errors import DuplicateKeyError
 
 router = APIRouter(prefix="/auth", tags=["Auth"])

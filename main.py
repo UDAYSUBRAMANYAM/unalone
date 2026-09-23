@@ -1,6 +1,4 @@
-# pyrefly: ignore [missing-import]
 from fastapi import FastAPI,APIRouter
-# pyrefly: ignore [missing-import]
 from fastapi import WebSocket
 from routes.auth import router as auth_router
 from routes.profile import router as profile_router
