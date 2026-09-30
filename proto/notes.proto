@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package notes;
+
+service NotesService {
+  rpc GetNearbyUsers (NearbyUsersRequest)
+      returns (NearbyUsersResponse);
+}
+
+message NearbyUsersRequest {
+  repeated string user_ids = 1;
+}
+
+message NearbyUser {
+  string user_id = 1;
+  string username = 2;
+  string note = 3;
+}
+
+message NearbyUsersResponse {
+  repeated NearbyUser users = 1;
+}

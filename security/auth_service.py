@@ -10,6 +10,7 @@ from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from fastapi import Depends, HTTPException
 # pyrefly: ignore [missing-import]
 from dotenv import load_dotenv
+from jose import JWTError, jwt
 
 # pyrefly: ignore [missing-import]
 from fastapi import WebSocket, WebSocketException, status
@@ -53,30 +54,31 @@ def create_refresh_token(subject:str):
     return jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
     
 
+async def get_current_user_ws(
+    websocket: WebSocket,
+) -> str:
 
-async def get_current_user_ws(websocket: WebSocket):
     token = websocket.query_params.get("token")
 
     if not token:
-        raise WebSocketException(
-            code=status.WS_1008_POLICY_VIOLATION,
-            reason="Missing token"
-        )
+        await websocket.close(code=1008)
+        raise Exception("Missing WebSocket token")
 
     try:
-        payload = decode_token(token)
-    except jwt.JWTError:
-        raise WebSocketException(
-            code=status.WS_1008_POLICY_VIOLATION,
-            reason="Invalid token"
+        payload = jwt.decode(
+            token,
+            SECRET_KEY,
+            algorithms=[ALGORITHM],
         )
 
-    user_id = payload.get("sub")
+        user_id = payload.get("sub")
 
-    if not user_id:
-        raise WebSocketException(
-            code=status.WS_1008_POLICY_VIOLATION,
-            reason="Invalid token"
-        )
+        if not user_id:
+            await websocket.close(code=1008)
+            raise Exception("Invalid token")
 
-    return user_id
+        return str(user_id)
+
+    except JWTError:
+        await websocket.close(code=1008)
+        raise Exception("Invalid or expired token")
