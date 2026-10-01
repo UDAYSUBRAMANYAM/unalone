@@ -56,8 +56,10 @@ async def get_current_user_ws(
     token = websocket.query_params.get("token")
 
     if not token:
-        await websocket.close(code=1008)
-        raise Exception("Missing WebSocket token")
+        raise WebSocketException(
+            code=status.WS_1008_POLICY_VIOLATION,
+            reason="Missing WebSocket token",
+        )
 
     try:
         payload = jwt.decode(

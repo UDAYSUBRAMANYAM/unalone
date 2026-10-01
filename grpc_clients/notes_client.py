@@ -23,7 +23,6 @@ async def get_nearby_users(user_ids):
                 user_ids=user_ids
             )
         )
-
         return [
             {
                 "user_id": user.user_id,
