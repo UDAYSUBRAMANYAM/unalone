@@ -1,20 +1,30 @@
 services:
   backend:
+<<<<<<< HEAD
     restart: unless-stopped
+=======
+    restart:  unless-stopped
+>>>>>>> origin/main
     build: .
     env_file: .env
     command: uvicorn main:app --host 0.0.0.0 --port 8000
     container_name: lokal-backend
     ports:
+<<<<<<< HEAD
       - "8000:8000"
     volumes:
     - .:/app
+=======
+      - "127.0.0.1:8000:8000"
+>>>>>>> origin/main
     depends_on:
       - redis
       - notes-grpc
   redis:
+    restart:  unless-stopped
     image: redis:8-alpine
     container_name: redis-lokal
+<<<<<<< HEAD
     ports:
       - "6379:6379"
   notes-grpc:
@@ -27,3 +37,5 @@ services:
       - .:/app
     environment:
       NOTES_GRPC_URL: notes-grpc:50051
+=======
+>>>>>>> origin/main

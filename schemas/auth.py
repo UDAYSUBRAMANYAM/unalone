@@ -1,6 +1,4 @@
-# pyrefly: ignore [missing-import]
 from pydantic import BaseModel,EmailStr
-# pyrefly: ignore [missing-import]
 from pydantic_extra_types.phone_numbers import PhoneNumber, PhoneNumberValidator
 from typing import Annotated,Optional
 
