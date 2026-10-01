@@ -4,6 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from routes.auth import router as auth_router
 from routes.profile import router as profile_router
 from routes.core import router as core_router
+from routes.notes import router as note_router
 # router = APIRouter()
 
 app = FastAPI()
@@ -23,3 +24,4 @@ def root():
 app.include_router(auth_router)
 app.include_router(profile_router)
 app.include_router(core_router)
+app.include_router(note_router)

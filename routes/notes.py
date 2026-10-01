@@ -30,7 +30,7 @@ def update_note(note:UserNote,user_id=Depends(get_current_user)):
     if result.matched_count == 0:
         raise HTTPException(status_code=404, detail="No Note Found")
     return {"message":"Note updated successfully", "note":note.note}
-@router.get("/delete")
+@router.delete("/delete")
 def delete_my_note(user_id = Depends(get_current_user)):
     result = notes.delete_one({"user_id":user_id})
     if result.deleted_count == 0:
