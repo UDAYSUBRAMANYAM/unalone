@@ -37,7 +37,6 @@ def delete_profile(user_id:str =Depends(get_current_user)):
         raise HTTPException(status_code=404,detail="profile not found")
     with client.start_session() as session:
         with session.start_transaction():
-
             profiles.delete_one({"_id": profile["_id"]},session=session)
             credentials.delete_one({"user_id": ObjectId(user_id)}, session=session)
             users.delete_one({"_id": ObjectId(user_id)},session=session)
