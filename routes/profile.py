@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 from fastapi import UploadFile,File
-=======
->>>>>>> origin/main
 from fastapi import APIRouter, Depends, HTTPException
 from bson import ObjectId
 
