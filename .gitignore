@@ -6,3 +6,5 @@
 __pycache__/
 *.py[cod]
 "@ | Out-File -FilePath .gitignore -Encoding utf8 -NoNewline
+__pycache__/
+*.py[cod]
