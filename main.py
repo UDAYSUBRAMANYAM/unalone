@@ -1,6 +1,5 @@
 from fastapi import FastAPI,APIRouter
 from fastapi import WebSocket
-# pyrefly: ignore [missing-import]
 from fastapi.middleware.cors import CORSMiddleware
 from routes.auth import router as auth_router
 from routes.profile import router as profile_router

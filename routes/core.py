@@ -2,7 +2,6 @@ from fastapi import APIRouter, WebSocket, WebSocketDisconnect, Depends
 
 from config_redis import redis_client
 from security.auth_service import get_current_user_ws
-# pyrefly: ignore [missing-import]
 from grpc_clients.notes_client import get_nearby_users
 
 

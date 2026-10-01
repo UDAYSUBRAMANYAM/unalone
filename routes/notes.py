@@ -1,4 +1,3 @@
-# pyrefly: ignore [missing-import]
 
 from security.auth_service import get_current_user_ws
 from fastapi import APIRouter, Depends, HTTPException

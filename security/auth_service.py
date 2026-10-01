@@ -5,7 +5,6 @@ import os
 from datetime import timezone
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from fastapi import Depends, HTTPException
-# pyrefly: ignore [missing-import]
 from dotenv import load_dotenv
 from jose import JWTError, jwt
 
