@@ -8,3 +8,7 @@ __pycache__/
 "@ | Out-File -FilePath .gitignore -Encoding utf8 -NoNewline
 __pycache__/
 *.py[cod]
+# Python
+__pycache__/
+*.py[cod]
+.env
