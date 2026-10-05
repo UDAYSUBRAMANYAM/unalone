@@ -1,56 +1,51 @@
-#!/bin/bash
-
-set -e
-
-APP_DIR="$HOME/apps/lokol/backend"
-
-cd "$APP_DIR"
-
-echo "======================================"
-echo "||      LOKOL DEPLOYMENT            ||"
-echo "======================================"
-
 echo ""
-echo "[1/2] Checking Docker..."
+echo "[3/3] Checking services..."
 
-if ! command -v docker >/dev/null 2>&1; then
-    echo "ERROR: Docker is not installed."
-    exit 1
-fi
+sleep 5
 
-if ! docker compose version >/dev/null 2>&1; then
-    echo "ERROR: Docker Compose is not available."
-    exit 1
-fi
-
-echo "Docker: $(docker --version)"
-echo "Compose: $(docker compose version --short)"
-echo "Docker check passed."
-
-echo ""
-echo "[2/2] Building and starting services..."
-
-docker compose build --no-cache --pull
-docker compose up -d --remove-orphans
-
-echo ""
-echo "Services:"
 docker compose ps
 
 echo ""
 echo "Checking backend..."
 
-sleep 10
-
 if curl -fsS http://127.0.0.1:8000/ >/dev/null; then
     echo "Backend: HEALTHY"
 else
     echo "Backend: FAILED"
+    echo ""
     docker compose logs --tail=50 backend
     exit 1
 fi
 
+
+echo ""
+echo "Checking frontend..."
+
+if curl -fsS http://127.0.0.1:3000/ >/dev/null; then
+    echo "Frontend: HEALTHY"
+else
+    echo "Frontend: FAILED"
+    echo ""
+    docker compose logs --tail=50 frontend
+    exit 1
+fi
+
+
+echo ""
+echo "Checking Redis..."
+
+if docker compose exec -T redis redis-cli ping | grep -q "PONG"; then
+    echo "Redis: HEALTHY"
+else
+    echo "Redis: FAILED"
+    docker compose logs --tail=50 redis
+    exit 1
+fi
+
+
 echo ""
 echo "======================================"
 echo "||     DEPLOYMENT SUCCESSFUL        ||"
+echo "======================================"
+echo "|| Commit: $COMMIT                  ||"
 echo "======================================"

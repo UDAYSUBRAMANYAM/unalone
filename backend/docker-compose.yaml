@@ -1,14 +1,16 @@
 services:
+
   backend:
     restart: unless-stopped
-    build: .
-    env_file: .env
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - .env
     command: uvicorn main:app --host 0.0.0.0 --port 8000
-    container_name: lokal-backend
+    container_name: lokol-backend
     ports:
       - "127.0.0.1:8000:8000"
-    volumes:
-      - .:/app
     depends_on:
       - redis
       - notes-grpc
@@ -17,22 +19,37 @@ services:
       REDIS_PORT: 6379
       NOTES_GRPC_URL: notes-grpc:50051
 
+
   redis:
     restart: unless-stopped
     image: redis:8-alpine
-    container_name: redis-lokal
-    ports:
-      - "6379:6379"
+    container_name: redis-lokol
+    volumes:
+      - redis_data:/data
+
 
   notes-grpc:
     restart: unless-stopped
-    build: .
-    env_file: .env
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - .env
     container_name: lokol-notes-grpc
     command: python -m notes_service
-    ports:
-      - "50051:50051"
-    volumes:
-      - .:/app
     environment:
       NOTES_GRPC_URL: notes-grpc:50051
+
+
+  frontend:
+    restart: unless-stopped
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: lokol-frontend
+    ports:
+      - "127.0.0.1:3000:80"
+
+
+volumes:
+  redis_data:
