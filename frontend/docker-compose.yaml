@@ -1,7 +1,8 @@
+services:
   frontend:
     restart: unless-stopped
     build:
-      context: ./frontend
+      context: .
       dockerfile: Dockerfile
     container_name: lokol-frontend
     ports:

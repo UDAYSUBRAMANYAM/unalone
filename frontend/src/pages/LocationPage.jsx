@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import useAuthStore from "../store/authStore";
-import { connectLocationSocket } from "../api/LocationApi";
+import { connectLocationSocket } from "../api/locationApi";
 
 import UserCard from "../components/UserCard";
 import MyUserCard from "../components/MyUserCard";
