@@ -1,0 +1,8 @@
+  frontend:
+    restart: unless-stopped
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: lokol-frontend
+    ports:
+      - "127.0.0.1:3000:80"
