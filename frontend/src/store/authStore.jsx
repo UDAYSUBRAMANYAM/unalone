@@ -1,10 +1,23 @@
-import {create} from "zustand";
+import { create } from "zustand";
+import { persist } from "zustand/middleware";
 
-const useAuthStore = create(set =>({
-    token : null,
-    setToken : (token) => {set({token});},
-    logout : () => {set({token:null});}
+const useAuthStore = create(
+  persist(
+    (set) => ({
+      token: null,
 
-}))
+      setToken: (token) => {
+        set({ token });
+      },
 
-export default useAuthStore
+      logout: () => {
+        set({ token: null });
+      },
+    }),
+    {
+      name: "lokol-auth",
+    }
+  )
+);
+
+export default useAuthStore;
