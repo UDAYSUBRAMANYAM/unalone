@@ -27,6 +27,7 @@ services:
   notes-grpc:
     restart: unless-stopped
     build: .
+    env_file: .env
     container_name: lokol-notes-grpc
     command: python -m notes_service
     ports:

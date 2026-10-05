@@ -1,0 +1,2381 @@
+{
+  "test": {
+    "name": "LOKOL LOCATION + NOTES WEBSOCKET TEST",
+    "duration_seconds": 60,
+    "location_send_interval_seconds": 5,
+    "users_count": 5,
+    "notes_created": 5
+  },
+  "expected_distances": [
+    {
+      "from_user": "location_test_84ad55c9",
+      "to_user": "location_test_84ad55c9",
+      "distance_km": 0.0,
+      "within_5km": true
+    },
+    {
+      "from_user": "location_test_84ad55c9",
+      "to_user": "location_test_35256c25",
+      "distance_km": 0.0,
+      "within_5km": true
+    },
+    {
+      "from_user": "location_test_84ad55c9",
+      "to_user": "location_test_af7fbfc1",
+      "distance_km": 0.7758,
+      "within_5km": true
+    },
+    {
+      "from_user": "location_test_84ad55c9",
+      "to_user": "location_test_1eb50ec6",
+      "distance_km": 0.3892,
+      "within_5km": true
+    },
+    {
+      "from_user": "location_test_84ad55c9",
+      "to_user": "location_test_14a552ed",
+      "distance_km": 5.0038,
+      "within_5km": false
+    }
+  ],
+  "users": [
+    {
+      "user_id": "6ac276c3dfc1db6a3f8ad278",
+      "username": "location_test_84ad55c9",
+      "location_name": "CENTER",
+      "latitude": 13.320057279090825,
+      "longitude": 79.58577901124954,
+      "note": "Testing center location user"
+    },
+    {
+      "user_id": "6ac276c4dfc1db6a3f8ad27e",
+      "username": "location_test_35256c25",
+      "location_name": "EXACT_SAME_LOCATION",
+      "latitude": 13.320057279090825,
+      "longitude": 79.58577901124954,
+      "note": "Testing exact same location"
+    },
+    {
+      "user_id": "6ac276c5dfc1db6a3f8ad284",
+      "username": "location_test_af7fbfc1",
+      "location_name": "VERY_CLOSE",
+      "latitude": 13.325057279090826,
+      "longitude": 79.59077901124954,
+      "note": "Testing very close user"
+    },
+    {
+      "user_id": "6ac276c5dfc1db6a3f8ad28a",
+      "username": "location_test_1eb50ec6",
+      "location_name": "AROUND_500M",
+      "latitude": 13.323557279090826,
+      "longitude": 79.58577901124954,
+      "note": "Testing approximately 500 meter user"
+    },
+    {
+      "user_id": "6ac276c6dfc1db6a3f8ad290",
+      "username": "location_test_14a552ed",
+      "location_name": "RADIUS_EDGE",
+      "latitude": 13.365057279090825,
+      "longitude": 79.58577901124954,
+      "note": "Testing radius edge user"
+    }
+  ],
+  "results": {
+    "location_test_1eb50ec6": {
+      "user_id": "6ac276c5dfc1db6a3f8ad28a",
+      "username": "location_test_1eb50ec6",
+      "location_name": "AROUND_500M",
+      "latitude": 13.323557279090826,
+      "longitude": 79.58577901124954,
+      "note": "Testing approximately 500 meter user",
+      "location_sends": 11,
+      "responses": 11,
+      "errors": 0,
+      "records": [
+        {
+          "timestamp": 1791129292.0038457,
+          "elapsed_seconds": 2.811,
+          "response": {
+            "type": "nearby_users",
+            "users": [
+              {
+                "user_id": "6ac276c3dfc1db6a3f8ad278",
+                "username": "",
+                "note": "Testing center location user",
+                "location": {
+                  "lat": -0.0035000000000007248,
+                  "lng": 0.0
+                }
+              },
+              {
+                "user_id": "6ac276c4dfc1db6a3f8ad27e",
+                "username": "",
+                "note": "Testing exact same location",
+                "location": {
+                  "lat": -0.0035000000000007248,
+                  "lng": 0.0
+                }
+              },
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad284",
+                "username": "",
+                "note": "Testing very close user",
+                "location": {
+                  "lat": 0.0015010048473715898,
+                  "lng": 0.004999637603759766
+                }
+              },
+              {
+                "user_id": "6ac276c6dfc1db6a3f8ad290",
+                "username": "",
+                "note": "Testing radius edge user",
+                "location": {
+                  "lat": 0.041498904741745335,
+                  "lng": 0.0
+                }
+              }
+            ]
+          }
+        },
+        {
+          "timestamp": 1791129297.5434582,
+          "elapsed_seconds": 8.35,
+          "response": {
+            "type": "nearby_users",
+            "users": [
+              {
+                "user_id": "6ac276c3dfc1db6a3f8ad278",
+                "username": "",
+                "note": "Testing center location user",
+                "location": {
+                  "lat": -0.0035000000000007248,
+                  "lng": 0.0
+                }
+              },
+              {
+                "user_id": "6ac276c4dfc1db6a3f8ad27e",
+                "username": "",
+                "note": "Testing exact same location",
+                "location": {
+                  "lat": -0.0035000000000007248,
+                  "lng": 0.0
+                }
+              },
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad284",
+                "username": "",
+                "note": "Testing very close user",
+                "location": {
+                  "lat": 0.0015010048473715898,
+                  "lng": 0.004999637603759766
+                }
+              },
+              {
+                "user_id": "6ac276c6dfc1db6a3f8ad290",
+                "username": "",
+                "note": "Testing radius edge user",
+                "location": {
+                  "lat": 0.041498904741745335,
+                  "lng": 0.0
+                }
+              }
+            ]
+          }
+        },
+        {
+          "timestamp": 1791129303.0065475,
+          "elapsed_seconds": 13.814,
+          "response": {
+            "type": "nearby_users",
+            "users": [
+              {
+                "user_id": "6ac276c3dfc1db6a3f8ad278",
+                "username": "",
+                "note": "Testing center location user",
+                "location": {
+                  "lat": -0.0035000000000007248,
+                  "lng": 0.0
+                }
+              },
+              {
+                "user_id": "6ac276c4dfc1db6a3f8ad27e",
+                "username": "",
+                "note": "Testing exact same location",
+                "location": {
+                  "lat": -0.0035000000000007248,
+                  "lng": 0.0
+                }
+              },
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad284",
+                "username": "",
+                "note": "Testing very close user",
+                "location": {
+                  "lat": 0.0015010048473715898,
+                  "lng": 0.004999637603759766
+                }
+              },
+              {
+                "user_id": "6ac276c6dfc1db6a3f8ad290",
+                "username": "",
+                "note": "Testing radius edge user",
+                "location": {
+                  "lat": 0.041498904741745335,
+                  "lng": 0.0
+                }
+              }
+            ]
+          }
+        },
+        {
+          "timestamp": 1791129308.6160138,
+          "elapsed_seconds": 19.423,
+          "response": {
+            "type": "nearby_users",
+            "users": [
+              {
+                "user_id": "6ac276c3dfc1db6a3f8ad278",
+                "username": "",
+                "note": "Testing center location user",
+                "location": {
+                  "lat": -0.0035000000000007248,
+                  "lng": 0.0
+                }
+              },
+              {
+                "user_id": "6ac276c4dfc1db6a3f8ad27e",
+                "username": "",
+                "note": "Testing exact same location",
+                "location": {
+                  "lat": -0.0035000000000007248,
+                  "lng": 0.0
+                }
+              },
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad284",
+                "username": "",
+                "note": "Testing very close user",
+                "location": {
+                  "lat": 0.0015010048473715898,
+                  "lng": 0.004999637603759766
+                }
+              },
+              {
+                "user_id": "6ac276c6dfc1db6a3f8ad290",
+                "username": "",
+                "note": "Testing radius edge user",
+                "location": {
+                  "lat": 0.041498904741745335,
+                  "lng": 0.0
+                }
+              }
+            ]
+          }
+        },
+        {
+          "timestamp": 1791129314.2164807,
+          "elapsed_seconds": 25.024,
+          "response": {
+            "type": "nearby_users",
+            "users": [
+              {
+                "user_id": "6ac276c3dfc1db6a3f8ad278",
+                "username": "",
+                "note": "Testing center location user",
+                "location": {
+                  "lat": -0.0035000000000007248,
+                  "lng": 0.0
+                }
+              },
+              {
+                "user_id": "6ac276c4dfc1db6a3f8ad27e",
+                "username": "",
+                "note": "Testing exact same location",
+                "location": {
+                  "lat": -0.0035000000000007248,
+                  "lng": 0.0
+                }
+              },
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad284",
+                "username": "",
+                "note": "Testing very close user",
+                "location": {
+                  "lat": 0.0015010048473715898,
+                  "lng": 0.004999637603759766
+                }
+              },
+              {
+                "user_id": "6ac276c6dfc1db6a3f8ad290",
+                "username": "",
+                "note": "Testing radius edge user",
+                "location": {
+                  "lat": 0.041498904741745335,
+                  "lng": 0.0
+                }
+              }
+            ]
+          }
+        },
+        {
+          "timestamp": 1791129319.679429,
+          "elapsed_seconds": 30.486,
+          "response": {
+            "type": "nearby_users",
+            "users": [
+              {
+                "user_id": "6ac276c3dfc1db6a3f8ad278",
+                "username": "",
+                "note": "Testing center location user",
+                "location": {
+                  "lat": -0.0035000000000007248,
+                  "lng": 0.0
+                }
+              },
+              {
+                "user_id": "6ac276c4dfc1db6a3f8ad27e",
+                "username": "",
+                "note": "Testing exact same location",
+                "location": {
+                  "lat": -0.0035000000000007248,
+                  "lng": 0.0
+                }
+              },
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad284",
+                "username": "",
+                "note": "Testing very close user",
+                "location": {
+                  "lat": 0.0015010048473715898,
+                  "lng": 0.004999637603759766
+                }
+              },
+              {
+                "user_id": "6ac276c6dfc1db6a3f8ad290",
+                "username": "",
+                "note": "Testing radius edge user",
+                "location": {
+                  "lat": 0.041498904741745335,
+                  "lng": 0.0
+                }
+              }
+            ]
+          }
+        },
+        {
+          "timestamp": 1791129325.1454508,
+          "elapsed_seconds": 35.952,
+          "response": {
+            "type": "nearby_users",
+            "users": [
+              {
+                "user_id": "6ac276c3dfc1db6a3f8ad278",
+                "username": "",
+                "note": "Testing center location user",
+                "location": {
+                  "lat": -0.0035000000000007248,
+                  "lng": 0.0
+                }
+              },
+              {
+                "user_id": "6ac276c4dfc1db6a3f8ad27e",
+                "username": "",
+                "note": "Testing exact same location",
+                "location": {
+                  "lat": -0.0035000000000007248,
+                  "lng": 0.0
+                }
+              },
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad284",
+                "username": "",
+                "note": "Testing very close user",
+                "location": {
+                  "lat": 0.0015010048473715898,
+                  "lng": 0.004999637603759766
+                }
+              },
+              {
+                "user_id": "6ac276c6dfc1db6a3f8ad290",
+                "username": "",
+                "note": "Testing radius edge user",
+                "location": {
+                  "lat": 0.041498904741745335,
+                  "lng": 0.0
+                }
+              }
+            ]
+          }
+        },
+        {
+          "timestamp": 1791129330.84385,
+          "elapsed_seconds": 41.651,
+          "response": {
+            "type": "nearby_users",
+            "users": [
+              {
+                "user_id": "6ac276c3dfc1db6a3f8ad278",
+                "username": "",
+                "note": "Testing center location user",
+                "location": {
+                  "lat": -0.0035000000000007248,
+                  "lng": 0.0
+                }
+              },
+              {
+                "user_id": "6ac276c4dfc1db6a3f8ad27e",
+                "username": "",
+                "note": "Testing exact same location",
+                "location": {
+                  "lat": -0.0035000000000007248,
+                  "lng": 0.0
+                }
+              },
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad284",
+                "username": "",
+                "note": "Testing very close user",
+                "location": {
+                  "lat": 0.0015010048473715898,
+                  "lng": 0.004999637603759766
+                }
+              },
+              {
+                "user_id": "6ac276c6dfc1db6a3f8ad290",
+                "username": "",
+                "note": "Testing radius edge user",
+                "location": {
+                  "lat": 0.041498904741745335,
+                  "lng": 0.0
+                }
+              }
+            ]
+          }
+        },
+        {
+          "timestamp": 1791129336.356227,
+          "elapsed_seconds": 47.163,
+          "response": {
+            "type": "nearby_users",
+            "users": [
+              {
+                "user_id": "6ac276c3dfc1db6a3f8ad278",
+                "username": "",
+                "note": "Testing center location user",
+                "location": {
+                  "lat": -0.0035000000000007248,
+                  "lng": 0.0
+                }
+              },
+              {
+                "user_id": "6ac276c4dfc1db6a3f8ad27e",
+                "username": "",
+                "note": "Testing exact same location",
+                "location": {
+                  "lat": -0.0035000000000007248,
+                  "lng": 0.0
+                }
+              },
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad284",
+                "username": "",
+                "note": "Testing very close user",
+                "location": {
+                  "lat": 0.0015010048473715898,
+                  "lng": 0.004999637603759766
+                }
+              },
+              {
+                "user_id": "6ac276c6dfc1db6a3f8ad290",
+                "username": "",
+                "note": "Testing radius edge user",
+                "location": {
+                  "lat": 0.041498904741745335,
+                  "lng": 0.0
+                }
+              }
+            ]
+          }
+        },
+        {
+          "timestamp": 1791129341.8166294,
+          "elapsed_seconds": 52.624,
+          "response": {
+            "type": "nearby_users",
+            "users": [
+              {
+                "user_id": "6ac276c3dfc1db6a3f8ad278",
+                "username": "",
+                "note": "Testing center location user",
+                "location": {
+                  "lat": -0.0035000000000007248,
+                  "lng": 0.0
+                }
+              },
+              {
+                "user_id": "6ac276c4dfc1db6a3f8ad27e",
+                "username": "",
+                "note": "Testing exact same location",
+                "location": {
+                  "lat": -0.0035000000000007248,
+                  "lng": 0.0
+                }
+              },
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad284",
+                "username": "",
+                "note": "Testing very close user",
+                "location": {
+                  "lat": 0.0015010048473715898,
+                  "lng": 0.004999637603759766
+                }
+              },
+              {
+                "user_id": "6ac276c6dfc1db6a3f8ad290",
+                "username": "",
+                "note": "Testing radius edge user",
+                "location": {
+                  "lat": 0.041498904741745335,
+                  "lng": 0.0
+                }
+              }
+            ]
+          }
+        },
+        {
+          "timestamp": 1791129347.26295,
+          "elapsed_seconds": 58.07,
+          "response": {
+            "type": "nearby_users",
+            "users": [
+              {
+                "user_id": "6ac276c3dfc1db6a3f8ad278",
+                "username": "",
+                "note": "Testing center location user",
+                "location": {
+                  "lat": -0.0035000000000007248,
+                  "lng": 0.0
+                }
+              },
+              {
+                "user_id": "6ac276c4dfc1db6a3f8ad27e",
+                "username": "",
+                "note": "Testing exact same location",
+                "location": {
+                  "lat": -0.0035000000000007248,
+                  "lng": 0.0
+                }
+              },
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad284",
+                "username": "",
+                "note": "Testing very close user",
+                "location": {
+                  "lat": 0.0015010048473715898,
+                  "lng": 0.004999637603759766
+                }
+              },
+              {
+                "user_id": "6ac276c6dfc1db6a3f8ad290",
+                "username": "",
+                "note": "Testing radius edge user",
+                "location": {
+                  "lat": 0.041498904741745335,
+                  "lng": 0.0
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "unique_nearby_users": [
+        "6ac276c3dfc1db6a3f8ad278",
+        "6ac276c4dfc1db6a3f8ad27e",
+        "6ac276c5dfc1db6a3f8ad284",
+        "6ac276c6dfc1db6a3f8ad290"
+      ],
+      "last_nearby_users": [
+        {
+          "user_id": "6ac276c3dfc1db6a3f8ad278",
+          "username": "",
+          "note": "Testing center location user",
+          "location": {
+            "lat": -0.0035000000000007248,
+            "lng": 0.0
+          }
+        },
+        {
+          "user_id": "6ac276c4dfc1db6a3f8ad27e",
+          "username": "",
+          "note": "Testing exact same location",
+          "location": {
+            "lat": -0.0035000000000007248,
+            "lng": 0.0
+          }
+        },
+        {
+          "user_id": "6ac276c5dfc1db6a3f8ad284",
+          "username": "",
+          "note": "Testing very close user",
+          "location": {
+            "lat": 0.0015010048473715898,
+            "lng": 0.004999637603759766
+          }
+        },
+        {
+          "user_id": "6ac276c6dfc1db6a3f8ad290",
+          "username": "",
+          "note": "Testing radius edge user",
+          "location": {
+            "lat": 0.041498904741745335,
+            "lng": 0.0
+          }
+        }
+      ]
+    },
+    "location_test_84ad55c9": {
+      "user_id": "6ac276c3dfc1db6a3f8ad278",
+      "username": "location_test_84ad55c9",
+      "location_name": "CENTER",
+      "latitude": 13.320057279090825,
+      "longitude": 79.58577901124954,
+      "note": "Testing center location user",
+      "location_sends": 11,
+      "responses": 11,
+      "errors": 0,
+      "records": [
+        {
+          "timestamp": 1791129291.461508,
+          "elapsed_seconds": 2.269,
+          "response": {
+            "type": "nearby_users",
+            "users": []
+          }
+        },
+        {
+          "timestamp": 1791129296.8770528,
+          "elapsed_seconds": 7.684,
+          "response": {
+            "type": "nearby_users",
+            "users": [
+              {
+                "user_id": "6ac276c4dfc1db6a3f8ad27e",
+                "username": "",
+                "note": "Testing exact same location",
+                "location": {
+                  "lat": 0.0,
+                  "lng": 0.0
+                }
+              },
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad284",
+                "username": "",
+                "note": "Testing very close user",
+                "location": {
+                  "lat": 0.0050010048473723145,
+                  "lng": 0.004999637603759766
+                }
+              },
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad28a",
+                "username": "",
+                "note": "Testing approximately 500 meter user",
+                "location": {
+                  "lat": 0.0035004499210486983,
+                  "lng": 0.0
+                }
+              }
+            ]
+          }
+        },
+        {
+          "timestamp": 1791129302.6930747,
+          "elapsed_seconds": 13.5,
+          "response": {
+            "type": "nearby_users",
+            "users": [
+              {
+                "user_id": "6ac276c4dfc1db6a3f8ad27e",
+                "username": "",
+                "note": "Testing exact same location",
+                "location": {
+                  "lat": 0.0,
+                  "lng": 0.0
+                }
+              },
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad284",
+                "username": "",
+                "note": "Testing very close user",
+                "location": {
+                  "lat": 0.0050010048473723145,
+                  "lng": 0.004999637603759766
+                }
+              },
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad28a",
+                "username": "",
+                "note": "Testing approximately 500 meter user",
+                "location": {
+                  "lat": 0.0035004499210486983,
+                  "lng": 0.0
+                }
+              }
+            ]
+          }
+        },
+        {
+          "timestamp": 1791129308.163105,
+          "elapsed_seconds": 18.97,
+          "response": {
+            "type": "nearby_users",
+            "users": [
+              {
+                "user_id": "6ac276c4dfc1db6a3f8ad27e",
+                "username": "",
+                "note": "Testing exact same location",
+                "location": {
+                  "lat": 0.0,
+                  "lng": 0.0
+                }
+              },
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad284",
+                "username": "",
+                "note": "Testing very close user",
+                "location": {
+                  "lat": 0.0050010048473723145,
+                  "lng": 0.004999637603759766
+                }
+              },
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad28a",
+                "username": "",
+                "note": "Testing approximately 500 meter user",
+                "location": {
+                  "lat": 0.0035004499210486983,
+                  "lng": 0.0
+                }
+              }
+            ]
+          }
+        },
+        {
+          "timestamp": 1791129313.6937277,
+          "elapsed_seconds": 24.501,
+          "response": {
+            "type": "nearby_users",
+            "users": [
+              {
+                "user_id": "6ac276c4dfc1db6a3f8ad27e",
+                "username": "",
+                "note": "Testing exact same location",
+                "location": {
+                  "lat": 0.0,
+                  "lng": 0.0
+                }
+              },
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad284",
+                "username": "",
+                "note": "Testing very close user",
+                "location": {
+                  "lat": 0.0050010048473723145,
+                  "lng": 0.004999637603759766
+                }
+              },
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad28a",
+                "username": "",
+                "note": "Testing approximately 500 meter user",
+                "location": {
+                  "lat": 0.0035004499210486983,
+                  "lng": 0.0
+                }
+              }
+            ]
+          }
+        },
+        {
+          "timestamp": 1791129319.1832225,
+          "elapsed_seconds": 29.99,
+          "response": {
+            "type": "nearby_users",
+            "users": [
+              {
+                "user_id": "6ac276c4dfc1db6a3f8ad27e",
+                "username": "",
+                "note": "Testing exact same location",
+                "location": {
+                  "lat": 0.0,
+                  "lng": 0.0
+                }
+              },
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad284",
+                "username": "",
+                "note": "Testing very close user",
+                "location": {
+                  "lat": 0.0050010048473723145,
+                  "lng": 0.004999637603759766
+                }
+              },
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad28a",
+                "username": "",
+                "note": "Testing approximately 500 meter user",
+                "location": {
+                  "lat": 0.0035004499210486983,
+                  "lng": 0.0
+                }
+              }
+            ]
+          }
+        },
+        {
+          "timestamp": 1791129324.640953,
+          "elapsed_seconds": 35.448,
+          "response": {
+            "type": "nearby_users",
+            "users": [
+              {
+                "user_id": "6ac276c4dfc1db6a3f8ad27e",
+                "username": "",
+                "note": "Testing exact same location",
+                "location": {
+                  "lat": 0.0,
+                  "lng": 0.0
+                }
+              },
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad284",
+                "username": "",
+                "note": "Testing very close user",
+                "location": {
+                  "lat": 0.0050010048473723145,
+                  "lng": 0.004999637603759766
+                }
+              },
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad28a",
+                "username": "",
+                "note": "Testing approximately 500 meter user",
+                "location": {
+                  "lat": 0.0035004499210486983,
+                  "lng": 0.0
+                }
+              }
+            ]
+          }
+        },
+        {
+          "timestamp": 1791129330.0862336,
+          "elapsed_seconds": 40.893,
+          "response": {
+            "type": "nearby_users",
+            "users": [
+              {
+                "user_id": "6ac276c4dfc1db6a3f8ad27e",
+                "username": "",
+                "note": "Testing exact same location",
+                "location": {
+                  "lat": 0.0,
+                  "lng": 0.0
+                }
+              },
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad284",
+                "username": "",
+                "note": "Testing very close user",
+                "location": {
+                  "lat": 0.0050010048473723145,
+                  "lng": 0.004999637603759766
+                }
+              },
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad28a",
+                "username": "",
+                "note": "Testing approximately 500 meter user",
+                "location": {
+                  "lat": 0.0035004499210486983,
+                  "lng": 0.0
+                }
+              }
+            ]
+          }
+        },
+        {
+          "timestamp": 1791129335.5359592,
+          "elapsed_seconds": 46.343,
+          "response": {
+            "type": "nearby_users",
+            "users": [
+              {
+                "user_id": "6ac276c4dfc1db6a3f8ad27e",
+                "username": "",
+                "note": "Testing exact same location",
+                "location": {
+                  "lat": 0.0,
+                  "lng": 0.0
+                }
+              },
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad284",
+                "username": "",
+                "note": "Testing very close user",
+                "location": {
+                  "lat": 0.0050010048473723145,
+                  "lng": 0.004999637603759766
+                }
+              },
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad28a",
+                "username": "",
+                "note": "Testing approximately 500 meter user",
+                "location": {
+                  "lat": 0.0035004499210486983,
+                  "lng": 0.0
+                }
+              }
+            ]
+          }
+        },
+        {
+          "timestamp": 1791129340.997122,
+          "elapsed_seconds": 51.804,
+          "response": {
+            "type": "nearby_users",
+            "users": [
+              {
+                "user_id": "6ac276c4dfc1db6a3f8ad27e",
+                "username": "",
+                "note": "Testing exact same location",
+                "location": {
+                  "lat": 0.0,
+                  "lng": 0.0
+                }
+              },
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad284",
+                "username": "",
+                "note": "Testing very close user",
+                "location": {
+                  "lat": 0.0050010048473723145,
+                  "lng": 0.004999637603759766
+                }
+              },
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad28a",
+                "username": "",
+                "note": "Testing approximately 500 meter user",
+                "location": {
+                  "lat": 0.0035004499210486983,
+                  "lng": 0.0
+                }
+              }
+            ]
+          }
+        },
+        {
+          "timestamp": 1791129346.4546082,
+          "elapsed_seconds": 57.262,
+          "response": {
+            "type": "nearby_users",
+            "users": [
+              {
+                "user_id": "6ac276c4dfc1db6a3f8ad27e",
+                "username": "",
+                "note": "Testing exact same location",
+                "location": {
+                  "lat": 0.0,
+                  "lng": 0.0
+                }
+              },
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad284",
+                "username": "",
+                "note": "Testing very close user",
+                "location": {
+                  "lat": 0.0050010048473723145,
+                  "lng": 0.004999637603759766
+                }
+              },
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad28a",
+                "username": "",
+                "note": "Testing approximately 500 meter user",
+                "location": {
+                  "lat": 0.0035004499210486983,
+                  "lng": 0.0
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "unique_nearby_users": [
+        "6ac276c4dfc1db6a3f8ad27e",
+        "6ac276c5dfc1db6a3f8ad284",
+        "6ac276c5dfc1db6a3f8ad28a"
+      ],
+      "last_nearby_users": [
+        {
+          "user_id": "6ac276c4dfc1db6a3f8ad27e",
+          "username": "",
+          "note": "Testing exact same location",
+          "location": {
+            "lat": 0.0,
+            "lng": 0.0
+          }
+        },
+        {
+          "user_id": "6ac276c5dfc1db6a3f8ad284",
+          "username": "",
+          "note": "Testing very close user",
+          "location": {
+            "lat": 0.0050010048473723145,
+            "lng": 0.004999637603759766
+          }
+        },
+        {
+          "user_id": "6ac276c5dfc1db6a3f8ad28a",
+          "username": "",
+          "note": "Testing approximately 500 meter user",
+          "location": {
+            "lat": 0.0035004499210486983,
+            "lng": 0.0
+          }
+        }
+      ]
+    },
+    "location_test_14a552ed": {
+      "user_id": "6ac276c6dfc1db6a3f8ad290",
+      "username": "location_test_14a552ed",
+      "location_name": "RADIUS_EDGE",
+      "latitude": 13.365057279090825,
+      "longitude": 79.58577901124954,
+      "note": "Testing radius edge user",
+      "location_sends": 11,
+      "responses": 11,
+      "errors": 0,
+      "records": [
+        {
+          "timestamp": 1791129291.5448213,
+          "elapsed_seconds": 2.352,
+          "response": {
+            "type": "nearby_users",
+            "users": [
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad284",
+                "username": "",
+                "note": "Testing very close user",
+                "location": {
+                  "lat": -0.039998995152627614,
+                  "lng": 0.004999637603759766
+                }
+              },
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad28a",
+                "username": "",
+                "note": "Testing approximately 500 meter user",
+                "location": {
+                  "lat": -0.04149955007895123,
+                  "lng": 0.0
+                }
+              }
+            ]
+          }
+        },
+        {
+          "timestamp": 1791129296.9940321,
+          "elapsed_seconds": 7.801,
+          "response": {
+            "type": "nearby_users",
+            "users": [
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad284",
+                "username": "",
+                "note": "Testing very close user",
+                "location": {
+                  "lat": -0.039998995152627614,
+                  "lng": 0.004999637603759766
+                }
+              },
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad28a",
+                "username": "",
+                "note": "Testing approximately 500 meter user",
+                "location": {
+                  "lat": -0.04149955007895123,
+                  "lng": 0.0
+                }
+              }
+            ]
+          }
+        },
+        {
+          "timestamp": 1791129302.7691746,
+          "elapsed_seconds": 13.576,
+          "response": {
+            "type": "nearby_users",
+            "users": [
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad284",
+                "username": "",
+                "note": "Testing very close user",
+                "location": {
+                  "lat": -0.039998995152627614,
+                  "lng": 0.004999637603759766
+                }
+              },
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad28a",
+                "username": "",
+                "note": "Testing approximately 500 meter user",
+                "location": {
+                  "lat": -0.04149955007895123,
+                  "lng": 0.0
+                }
+              }
+            ]
+          }
+        },
+        {
+          "timestamp": 1791129308.2672794,
+          "elapsed_seconds": 19.074,
+          "response": {
+            "type": "nearby_users",
+            "users": [
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad284",
+                "username": "",
+                "note": "Testing very close user",
+                "location": {
+                  "lat": -0.039998995152627614,
+                  "lng": 0.004999637603759766
+                }
+              },
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad28a",
+                "username": "",
+                "note": "Testing approximately 500 meter user",
+                "location": {
+                  "lat": -0.04149955007895123,
+                  "lng": 0.0
+                }
+              }
+            ]
+          }
+        },
+        {
+          "timestamp": 1791129313.833866,
+          "elapsed_seconds": 24.641,
+          "response": {
+            "type": "nearby_users",
+            "users": [
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad284",
+                "username": "",
+                "note": "Testing very close user",
+                "location": {
+                  "lat": -0.039998995152627614,
+                  "lng": 0.004999637603759766
+                }
+              },
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad28a",
+                "username": "",
+                "note": "Testing approximately 500 meter user",
+                "location": {
+                  "lat": -0.04149955007895123,
+                  "lng": 0.0
+                }
+              }
+            ]
+          }
+        },
+        {
+          "timestamp": 1791129319.2842739,
+          "elapsed_seconds": 30.091,
+          "response": {
+            "type": "nearby_users",
+            "users": [
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad284",
+                "username": "",
+                "note": "Testing very close user",
+                "location": {
+                  "lat": -0.039998995152627614,
+                  "lng": 0.004999637603759766
+                }
+              },
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad28a",
+                "username": "",
+                "note": "Testing approximately 500 meter user",
+                "location": {
+                  "lat": -0.04149955007895123,
+                  "lng": 0.0
+                }
+              }
+            ]
+          }
+        },
+        {
+          "timestamp": 1791129324.7886496,
+          "elapsed_seconds": 35.596,
+          "response": {
+            "type": "nearby_users",
+            "users": [
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad284",
+                "username": "",
+                "note": "Testing very close user",
+                "location": {
+                  "lat": -0.039998995152627614,
+                  "lng": 0.004999637603759766
+                }
+              },
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad28a",
+                "username": "",
+                "note": "Testing approximately 500 meter user",
+                "location": {
+                  "lat": -0.04149955007895123,
+                  "lng": 0.0
+                }
+              }
+            ]
+          }
+        },
+        {
+          "timestamp": 1791129330.5339603,
+          "elapsed_seconds": 41.341,
+          "response": {
+            "type": "nearby_users",
+            "users": [
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad284",
+                "username": "",
+                "note": "Testing very close user",
+                "location": {
+                  "lat": -0.039998995152627614,
+                  "lng": 0.004999637603759766
+                }
+              },
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad28a",
+                "username": "",
+                "note": "Testing approximately 500 meter user",
+                "location": {
+                  "lat": -0.04149955007895123,
+                  "lng": 0.0
+                }
+              }
+            ]
+          }
+        },
+        {
+          "timestamp": 1791129335.986798,
+          "elapsed_seconds": 46.794,
+          "response": {
+            "type": "nearby_users",
+            "users": [
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad284",
+                "username": "",
+                "note": "Testing very close user",
+                "location": {
+                  "lat": -0.039998995152627614,
+                  "lng": 0.004999637603759766
+                }
+              },
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad28a",
+                "username": "",
+                "note": "Testing approximately 500 meter user",
+                "location": {
+                  "lat": -0.04149955007895123,
+                  "lng": 0.0
+                }
+              }
+            ]
+          }
+        },
+        {
+          "timestamp": 1791129341.443747,
+          "elapsed_seconds": 52.251,
+          "response": {
+            "type": "nearby_users",
+            "users": [
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad284",
+                "username": "",
+                "note": "Testing very close user",
+                "location": {
+                  "lat": -0.039998995152627614,
+                  "lng": 0.004999637603759766
+                }
+              },
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad28a",
+                "username": "",
+                "note": "Testing approximately 500 meter user",
+                "location": {
+                  "lat": -0.04149955007895123,
+                  "lng": 0.0
+                }
+              }
+            ]
+          }
+        },
+        {
+          "timestamp": 1791129346.8959637,
+          "elapsed_seconds": 57.703,
+          "response": {
+            "type": "nearby_users",
+            "users": [
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad284",
+                "username": "",
+                "note": "Testing very close user",
+                "location": {
+                  "lat": -0.039998995152627614,
+                  "lng": 0.004999637603759766
+                }
+              },
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad28a",
+                "username": "",
+                "note": "Testing approximately 500 meter user",
+                "location": {
+                  "lat": -0.04149955007895123,
+                  "lng": 0.0
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "unique_nearby_users": [
+        "6ac276c5dfc1db6a3f8ad284",
+        "6ac276c5dfc1db6a3f8ad28a"
+      ],
+      "last_nearby_users": [
+        {
+          "user_id": "6ac276c5dfc1db6a3f8ad284",
+          "username": "",
+          "note": "Testing very close user",
+          "location": {
+            "lat": -0.039998995152627614,
+            "lng": 0.004999637603759766
+          }
+        },
+        {
+          "user_id": "6ac276c5dfc1db6a3f8ad28a",
+          "username": "",
+          "note": "Testing approximately 500 meter user",
+          "location": {
+            "lat": -0.04149955007895123,
+            "lng": 0.0
+          }
+        }
+      ]
+    },
+    "location_test_af7fbfc1": {
+      "user_id": "6ac276c5dfc1db6a3f8ad284",
+      "username": "location_test_af7fbfc1",
+      "location_name": "VERY_CLOSE",
+      "latitude": 13.325057279090826,
+      "longitude": 79.59077901124954,
+      "note": "Testing very close user",
+      "location_sends": 11,
+      "responses": 11,
+      "errors": 0,
+      "records": [
+        {
+          "timestamp": 1791129291.8238423,
+          "elapsed_seconds": 2.631,
+          "response": {
+            "type": "nearby_users",
+            "users": [
+              {
+                "user_id": "6ac276c3dfc1db6a3f8ad278",
+                "username": "",
+                "note": "Testing center location user",
+                "location": {
+                  "lat": -0.005000000000000782,
+                  "lng": -0.0049999999999954525
+                }
+              },
+              {
+                "user_id": "6ac276c4dfc1db6a3f8ad27e",
+                "username": "",
+                "note": "Testing exact same location",
+                "location": {
+                  "lat": -0.005000000000000782,
+                  "lng": -0.0049999999999954525
+                }
+              },
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad28a",
+                "username": "",
+                "note": "Testing approximately 500 meter user",
+                "location": {
+                  "lat": -0.0014995500789520833,
+                  "lng": -0.0049999999999954525
+                }
+              },
+              {
+                "user_id": "6ac276c6dfc1db6a3f8ad290",
+                "username": "",
+                "note": "Testing radius edge user",
+                "location": {
+                  "lat": 0.03999890474174528,
+                  "lng": -0.0049999999999954525
+                }
+              }
+            ]
+          }
+        },
+        {
+          "timestamp": 1791129297.3255823,
+          "elapsed_seconds": 8.133,
+          "response": {
+            "type": "nearby_users",
+            "users": [
+              {
+                "user_id": "6ac276c3dfc1db6a3f8ad278",
+                "username": "",
+                "note": "Testing center location user",
+                "location": {
+                  "lat": -0.005000000000000782,
+                  "lng": -0.0049999999999954525
+                }
+              },
+              {
+                "user_id": "6ac276c4dfc1db6a3f8ad27e",
+                "username": "",
+                "note": "Testing exact same location",
+                "location": {
+                  "lat": -0.005000000000000782,
+                  "lng": -0.0049999999999954525
+                }
+              },
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad28a",
+                "username": "",
+                "note": "Testing approximately 500 meter user",
+                "location": {
+                  "lat": -0.0014995500789520833,
+                  "lng": -0.0049999999999954525
+                }
+              },
+              {
+                "user_id": "6ac276c6dfc1db6a3f8ad290",
+                "username": "",
+                "note": "Testing radius edge user",
+                "location": {
+                  "lat": 0.03999890474174528,
+                  "lng": -0.0049999999999954525
+                }
+              }
+            ]
+          }
+        },
+        {
+          "timestamp": 1791129302.930267,
+          "elapsed_seconds": 13.737,
+          "response": {
+            "type": "nearby_users",
+            "users": [
+              {
+                "user_id": "6ac276c3dfc1db6a3f8ad278",
+                "username": "",
+                "note": "Testing center location user",
+                "location": {
+                  "lat": -0.005000000000000782,
+                  "lng": -0.0049999999999954525
+                }
+              },
+              {
+                "user_id": "6ac276c4dfc1db6a3f8ad27e",
+                "username": "",
+                "note": "Testing exact same location",
+                "location": {
+                  "lat": -0.005000000000000782,
+                  "lng": -0.0049999999999954525
+                }
+              },
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad28a",
+                "username": "",
+                "note": "Testing approximately 500 meter user",
+                "location": {
+                  "lat": -0.0014995500789520833,
+                  "lng": -0.0049999999999954525
+                }
+              },
+              {
+                "user_id": "6ac276c6dfc1db6a3f8ad290",
+                "username": "",
+                "note": "Testing radius edge user",
+                "location": {
+                  "lat": 0.03999890474174528,
+                  "lng": -0.0049999999999954525
+                }
+              }
+            ]
+          }
+        },
+        {
+          "timestamp": 1791129308.5106845,
+          "elapsed_seconds": 19.318,
+          "response": {
+            "type": "nearby_users",
+            "users": [
+              {
+                "user_id": "6ac276c3dfc1db6a3f8ad278",
+                "username": "",
+                "note": "Testing center location user",
+                "location": {
+                  "lat": -0.005000000000000782,
+                  "lng": -0.0049999999999954525
+                }
+              },
+              {
+                "user_id": "6ac276c4dfc1db6a3f8ad27e",
+                "username": "",
+                "note": "Testing exact same location",
+                "location": {
+                  "lat": -0.005000000000000782,
+                  "lng": -0.0049999999999954525
+                }
+              },
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad28a",
+                "username": "",
+                "note": "Testing approximately 500 meter user",
+                "location": {
+                  "lat": -0.0014995500789520833,
+                  "lng": -0.0049999999999954525
+                }
+              },
+              {
+                "user_id": "6ac276c6dfc1db6a3f8ad290",
+                "username": "",
+                "note": "Testing radius edge user",
+                "location": {
+                  "lat": 0.03999890474174528,
+                  "lng": -0.0049999999999954525
+                }
+              }
+            ]
+          }
+        },
+        {
+          "timestamp": 1791129314.09568,
+          "elapsed_seconds": 24.903,
+          "response": {
+            "type": "nearby_users",
+            "users": [
+              {
+                "user_id": "6ac276c3dfc1db6a3f8ad278",
+                "username": "",
+                "note": "Testing center location user",
+                "location": {
+                  "lat": -0.005000000000000782,
+                  "lng": -0.0049999999999954525
+                }
+              },
+              {
+                "user_id": "6ac276c4dfc1db6a3f8ad27e",
+                "username": "",
+                "note": "Testing exact same location",
+                "location": {
+                  "lat": -0.005000000000000782,
+                  "lng": -0.0049999999999954525
+                }
+              },
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad28a",
+                "username": "",
+                "note": "Testing approximately 500 meter user",
+                "location": {
+                  "lat": -0.0014995500789520833,
+                  "lng": -0.0049999999999954525
+                }
+              },
+              {
+                "user_id": "6ac276c6dfc1db6a3f8ad290",
+                "username": "",
+                "note": "Testing radius edge user",
+                "location": {
+                  "lat": 0.03999890474174528,
+                  "lng": -0.0049999999999954525
+                }
+              }
+            ]
+          }
+        },
+        {
+          "timestamp": 1791129319.5433056,
+          "elapsed_seconds": 30.35,
+          "response": {
+            "type": "nearby_users",
+            "users": [
+              {
+                "user_id": "6ac276c3dfc1db6a3f8ad278",
+                "username": "",
+                "note": "Testing center location user",
+                "location": {
+                  "lat": -0.005000000000000782,
+                  "lng": -0.0049999999999954525
+                }
+              },
+              {
+                "user_id": "6ac276c4dfc1db6a3f8ad27e",
+                "username": "",
+                "note": "Testing exact same location",
+                "location": {
+                  "lat": -0.005000000000000782,
+                  "lng": -0.0049999999999954525
+                }
+              },
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad28a",
+                "username": "",
+                "note": "Testing approximately 500 meter user",
+                "location": {
+                  "lat": -0.0014995500789520833,
+                  "lng": -0.0049999999999954525
+                }
+              },
+              {
+                "user_id": "6ac276c6dfc1db6a3f8ad290",
+                "username": "",
+                "note": "Testing radius edge user",
+                "location": {
+                  "lat": 0.03999890474174528,
+                  "lng": -0.0049999999999954525
+                }
+              }
+            ]
+          }
+        },
+        {
+          "timestamp": 1791129325.0399055,
+          "elapsed_seconds": 35.847,
+          "response": {
+            "type": "nearby_users",
+            "users": [
+              {
+                "user_id": "6ac276c3dfc1db6a3f8ad278",
+                "username": "",
+                "note": "Testing center location user",
+                "location": {
+                  "lat": -0.005000000000000782,
+                  "lng": -0.0049999999999954525
+                }
+              },
+              {
+                "user_id": "6ac276c4dfc1db6a3f8ad27e",
+                "username": "",
+                "note": "Testing exact same location",
+                "location": {
+                  "lat": -0.005000000000000782,
+                  "lng": -0.0049999999999954525
+                }
+              },
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad28a",
+                "username": "",
+                "note": "Testing approximately 500 meter user",
+                "location": {
+                  "lat": -0.0014995500789520833,
+                  "lng": -0.0049999999999954525
+                }
+              },
+              {
+                "user_id": "6ac276c6dfc1db6a3f8ad290",
+                "username": "",
+                "note": "Testing radius edge user",
+                "location": {
+                  "lat": 0.03999890474174528,
+                  "lng": -0.0049999999999954525
+                }
+              }
+            ]
+          }
+        },
+        {
+          "timestamp": 1791129330.7741406,
+          "elapsed_seconds": 41.581,
+          "response": {
+            "type": "nearby_users",
+            "users": [
+              {
+                "user_id": "6ac276c3dfc1db6a3f8ad278",
+                "username": "",
+                "note": "Testing center location user",
+                "location": {
+                  "lat": -0.005000000000000782,
+                  "lng": -0.0049999999999954525
+                }
+              },
+              {
+                "user_id": "6ac276c4dfc1db6a3f8ad27e",
+                "username": "",
+                "note": "Testing exact same location",
+                "location": {
+                  "lat": -0.005000000000000782,
+                  "lng": -0.0049999999999954525
+                }
+              },
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad28a",
+                "username": "",
+                "note": "Testing approximately 500 meter user",
+                "location": {
+                  "lat": -0.0014995500789520833,
+                  "lng": -0.0049999999999954525
+                }
+              },
+              {
+                "user_id": "6ac276c6dfc1db6a3f8ad290",
+                "username": "",
+                "note": "Testing radius edge user",
+                "location": {
+                  "lat": 0.03999890474174528,
+                  "lng": -0.0049999999999954525
+                }
+              }
+            ]
+          }
+        },
+        {
+          "timestamp": 1791129336.2696662,
+          "elapsed_seconds": 47.077,
+          "response": {
+            "type": "nearby_users",
+            "users": [
+              {
+                "user_id": "6ac276c3dfc1db6a3f8ad278",
+                "username": "",
+                "note": "Testing center location user",
+                "location": {
+                  "lat": -0.005000000000000782,
+                  "lng": -0.0049999999999954525
+                }
+              },
+              {
+                "user_id": "6ac276c4dfc1db6a3f8ad27e",
+                "username": "",
+                "note": "Testing exact same location",
+                "location": {
+                  "lat": -0.005000000000000782,
+                  "lng": -0.0049999999999954525
+                }
+              },
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad28a",
+                "username": "",
+                "note": "Testing approximately 500 meter user",
+                "location": {
+                  "lat": -0.0014995500789520833,
+                  "lng": -0.0049999999999954525
+                }
+              },
+              {
+                "user_id": "6ac276c6dfc1db6a3f8ad290",
+                "username": "",
+                "note": "Testing radius edge user",
+                "location": {
+                  "lat": 0.03999890474174528,
+                  "lng": -0.0049999999999954525
+                }
+              }
+            ]
+          }
+        },
+        {
+          "timestamp": 1791129341.7184618,
+          "elapsed_seconds": 52.526,
+          "response": {
+            "type": "nearby_users",
+            "users": [
+              {
+                "user_id": "6ac276c3dfc1db6a3f8ad278",
+                "username": "",
+                "note": "Testing center location user",
+                "location": {
+                  "lat": -0.005000000000000782,
+                  "lng": -0.0049999999999954525
+                }
+              },
+              {
+                "user_id": "6ac276c4dfc1db6a3f8ad27e",
+                "username": "",
+                "note": "Testing exact same location",
+                "location": {
+                  "lat": -0.005000000000000782,
+                  "lng": -0.0049999999999954525
+                }
+              },
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad28a",
+                "username": "",
+                "note": "Testing approximately 500 meter user",
+                "location": {
+                  "lat": -0.0014995500789520833,
+                  "lng": -0.0049999999999954525
+                }
+              },
+              {
+                "user_id": "6ac276c6dfc1db6a3f8ad290",
+                "username": "",
+                "note": "Testing radius edge user",
+                "location": {
+                  "lat": 0.03999890474174528,
+                  "lng": -0.0049999999999954525
+                }
+              }
+            ]
+          }
+        },
+        {
+          "timestamp": 1791129347.1826217,
+          "elapsed_seconds": 57.99,
+          "response": {
+            "type": "nearby_users",
+            "users": [
+              {
+                "user_id": "6ac276c3dfc1db6a3f8ad278",
+                "username": "",
+                "note": "Testing center location user",
+                "location": {
+                  "lat": -0.005000000000000782,
+                  "lng": -0.0049999999999954525
+                }
+              },
+              {
+                "user_id": "6ac276c4dfc1db6a3f8ad27e",
+                "username": "",
+                "note": "Testing exact same location",
+                "location": {
+                  "lat": -0.005000000000000782,
+                  "lng": -0.0049999999999954525
+                }
+              },
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad28a",
+                "username": "",
+                "note": "Testing approximately 500 meter user",
+                "location": {
+                  "lat": -0.0014995500789520833,
+                  "lng": -0.0049999999999954525
+                }
+              },
+              {
+                "user_id": "6ac276c6dfc1db6a3f8ad290",
+                "username": "",
+                "note": "Testing radius edge user",
+                "location": {
+                  "lat": 0.03999890474174528,
+                  "lng": -0.0049999999999954525
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "unique_nearby_users": [
+        "6ac276c3dfc1db6a3f8ad278",
+        "6ac276c4dfc1db6a3f8ad27e",
+        "6ac276c5dfc1db6a3f8ad28a",
+        "6ac276c6dfc1db6a3f8ad290"
+      ],
+      "last_nearby_users": [
+        {
+          "user_id": "6ac276c3dfc1db6a3f8ad278",
+          "username": "",
+          "note": "Testing center location user",
+          "location": {
+            "lat": -0.005000000000000782,
+            "lng": -0.0049999999999954525
+          }
+        },
+        {
+          "user_id": "6ac276c4dfc1db6a3f8ad27e",
+          "username": "",
+          "note": "Testing exact same location",
+          "location": {
+            "lat": -0.005000000000000782,
+            "lng": -0.0049999999999954525
+          }
+        },
+        {
+          "user_id": "6ac276c5dfc1db6a3f8ad28a",
+          "username": "",
+          "note": "Testing approximately 500 meter user",
+          "location": {
+            "lat": -0.0014995500789520833,
+            "lng": -0.0049999999999954525
+          }
+        },
+        {
+          "user_id": "6ac276c6dfc1db6a3f8ad290",
+          "username": "",
+          "note": "Testing radius edge user",
+          "location": {
+            "lat": 0.03999890474174528,
+            "lng": -0.0049999999999954525
+          }
+        }
+      ]
+    },
+    "location_test_35256c25": {
+      "user_id": "6ac276c4dfc1db6a3f8ad27e",
+      "username": "location_test_35256c25",
+      "location_name": "EXACT_SAME_LOCATION",
+      "latitude": 13.320057279090825,
+      "longitude": 79.58577901124954,
+      "note": "Testing exact same location",
+      "location_sends": 11,
+      "responses": 11,
+      "errors": 0,
+      "records": [
+        {
+          "timestamp": 1791129291.6698499,
+          "elapsed_seconds": 2.477,
+          "response": {
+            "type": "nearby_users",
+            "users": [
+              {
+                "user_id": "6ac276c3dfc1db6a3f8ad278",
+                "username": "",
+                "note": "Testing center location user",
+                "location": {
+                  "lat": 0.0,
+                  "lng": 0.0
+                }
+              },
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad284",
+                "username": "",
+                "note": "Testing very close user",
+                "location": {
+                  "lat": 0.0050010048473723145,
+                  "lng": 0.004999637603759766
+                }
+              },
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad28a",
+                "username": "",
+                "note": "Testing approximately 500 meter user",
+                "location": {
+                  "lat": 0.0035004499210486983,
+                  "lng": 0.0
+                }
+              }
+            ]
+          }
+        },
+        {
+          "timestamp": 1791129297.129893,
+          "elapsed_seconds": 7.937,
+          "response": {
+            "type": "nearby_users",
+            "users": [
+              {
+                "user_id": "6ac276c3dfc1db6a3f8ad278",
+                "username": "",
+                "note": "Testing center location user",
+                "location": {
+                  "lat": 0.0,
+                  "lng": 0.0
+                }
+              },
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad284",
+                "username": "",
+                "note": "Testing very close user",
+                "location": {
+                  "lat": 0.0050010048473723145,
+                  "lng": 0.004999637603759766
+                }
+              },
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad28a",
+                "username": "",
+                "note": "Testing approximately 500 meter user",
+                "location": {
+                  "lat": 0.0035004499210486983,
+                  "lng": 0.0
+                }
+              }
+            ]
+          }
+        },
+        {
+          "timestamp": 1791129302.8436131,
+          "elapsed_seconds": 13.651,
+          "response": {
+            "type": "nearby_users",
+            "users": [
+              {
+                "user_id": "6ac276c3dfc1db6a3f8ad278",
+                "username": "",
+                "note": "Testing center location user",
+                "location": {
+                  "lat": 0.0,
+                  "lng": 0.0
+                }
+              },
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad284",
+                "username": "",
+                "note": "Testing very close user",
+                "location": {
+                  "lat": 0.0050010048473723145,
+                  "lng": 0.004999637603759766
+                }
+              },
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad28a",
+                "username": "",
+                "note": "Testing approximately 500 meter user",
+                "location": {
+                  "lat": 0.0035004499210486983,
+                  "lng": 0.0
+                }
+              }
+            ]
+          }
+        },
+        {
+          "timestamp": 1791129308.3951843,
+          "elapsed_seconds": 19.202,
+          "response": {
+            "type": "nearby_users",
+            "users": [
+              {
+                "user_id": "6ac276c3dfc1db6a3f8ad278",
+                "username": "",
+                "note": "Testing center location user",
+                "location": {
+                  "lat": 0.0,
+                  "lng": 0.0
+                }
+              },
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad284",
+                "username": "",
+                "note": "Testing very close user",
+                "location": {
+                  "lat": 0.0050010048473723145,
+                  "lng": 0.004999637603759766
+                }
+              },
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad28a",
+                "username": "",
+                "note": "Testing approximately 500 meter user",
+                "location": {
+                  "lat": 0.0035004499210486983,
+                  "lng": 0.0
+                }
+              }
+            ]
+          }
+        },
+        {
+          "timestamp": 1791129313.9749737,
+          "elapsed_seconds": 24.782,
+          "response": {
+            "type": "nearby_users",
+            "users": [
+              {
+                "user_id": "6ac276c3dfc1db6a3f8ad278",
+                "username": "",
+                "note": "Testing center location user",
+                "location": {
+                  "lat": 0.0,
+                  "lng": 0.0
+                }
+              },
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad284",
+                "username": "",
+                "note": "Testing very close user",
+                "location": {
+                  "lat": 0.0050010048473723145,
+                  "lng": 0.004999637603759766
+                }
+              },
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad28a",
+                "username": "",
+                "note": "Testing approximately 500 meter user",
+                "location": {
+                  "lat": 0.0035004499210486983,
+                  "lng": 0.0
+                }
+              }
+            ]
+          }
+        },
+        {
+          "timestamp": 1791129319.4526827,
+          "elapsed_seconds": 30.26,
+          "response": {
+            "type": "nearby_users",
+            "users": [
+              {
+                "user_id": "6ac276c3dfc1db6a3f8ad278",
+                "username": "",
+                "note": "Testing center location user",
+                "location": {
+                  "lat": 0.0,
+                  "lng": 0.0
+                }
+              },
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad284",
+                "username": "",
+                "note": "Testing very close user",
+                "location": {
+                  "lat": 0.0050010048473723145,
+                  "lng": 0.004999637603759766
+                }
+              },
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad28a",
+                "username": "",
+                "note": "Testing approximately 500 meter user",
+                "location": {
+                  "lat": 0.0035004499210486983,
+                  "lng": 0.0
+                }
+              }
+            ]
+          }
+        },
+        {
+          "timestamp": 1791129324.9302242,
+          "elapsed_seconds": 35.737,
+          "response": {
+            "type": "nearby_users",
+            "users": [
+              {
+                "user_id": "6ac276c3dfc1db6a3f8ad278",
+                "username": "",
+                "note": "Testing center location user",
+                "location": {
+                  "lat": 0.0,
+                  "lng": 0.0
+                }
+              },
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad284",
+                "username": "",
+                "note": "Testing very close user",
+                "location": {
+                  "lat": 0.0050010048473723145,
+                  "lng": 0.004999637603759766
+                }
+              },
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad28a",
+                "username": "",
+                "note": "Testing approximately 500 meter user",
+                "location": {
+                  "lat": 0.0035004499210486983,
+                  "lng": 0.0
+                }
+              }
+            ]
+          }
+        },
+        {
+          "timestamp": 1791129330.7021098,
+          "elapsed_seconds": 41.509,
+          "response": {
+            "type": "nearby_users",
+            "users": [
+              {
+                "user_id": "6ac276c3dfc1db6a3f8ad278",
+                "username": "",
+                "note": "Testing center location user",
+                "location": {
+                  "lat": 0.0,
+                  "lng": 0.0
+                }
+              },
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad284",
+                "username": "",
+                "note": "Testing very close user",
+                "location": {
+                  "lat": 0.0050010048473723145,
+                  "lng": 0.004999637603759766
+                }
+              },
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad28a",
+                "username": "",
+                "note": "Testing approximately 500 meter user",
+                "location": {
+                  "lat": 0.0035004499210486983,
+                  "lng": 0.0
+                }
+              }
+            ]
+          }
+        },
+        {
+          "timestamp": 1791129336.1547544,
+          "elapsed_seconds": 46.962,
+          "response": {
+            "type": "nearby_users",
+            "users": [
+              {
+                "user_id": "6ac276c3dfc1db6a3f8ad278",
+                "username": "",
+                "note": "Testing center location user",
+                "location": {
+                  "lat": 0.0,
+                  "lng": 0.0
+                }
+              },
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad284",
+                "username": "",
+                "note": "Testing very close user",
+                "location": {
+                  "lat": 0.0050010048473723145,
+                  "lng": 0.004999637603759766
+                }
+              },
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad28a",
+                "username": "",
+                "note": "Testing approximately 500 meter user",
+                "location": {
+                  "lat": 0.0035004499210486983,
+                  "lng": 0.0
+                }
+              }
+            ]
+          }
+        },
+        {
+          "timestamp": 1791129341.5976338,
+          "elapsed_seconds": 52.405,
+          "response": {
+            "type": "nearby_users",
+            "users": [
+              {
+                "user_id": "6ac276c3dfc1db6a3f8ad278",
+                "username": "",
+                "note": "Testing center location user",
+                "location": {
+                  "lat": 0.0,
+                  "lng": 0.0
+                }
+              },
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad284",
+                "username": "",
+                "note": "Testing very close user",
+                "location": {
+                  "lat": 0.0050010048473723145,
+                  "lng": 0.004999637603759766
+                }
+              },
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad28a",
+                "username": "",
+                "note": "Testing approximately 500 meter user",
+                "location": {
+                  "lat": 0.0035004499210486983,
+                  "lng": 0.0
+                }
+              }
+            ]
+          }
+        },
+        {
+          "timestamp": 1791129347.0457284,
+          "elapsed_seconds": 57.853,
+          "response": {
+            "type": "nearby_users",
+            "users": [
+              {
+                "user_id": "6ac276c3dfc1db6a3f8ad278",
+                "username": "",
+                "note": "Testing center location user",
+                "location": {
+                  "lat": 0.0,
+                  "lng": 0.0
+                }
+              },
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad284",
+                "username": "",
+                "note": "Testing very close user",
+                "location": {
+                  "lat": 0.0050010048473723145,
+                  "lng": 0.004999637603759766
+                }
+              },
+              {
+                "user_id": "6ac276c5dfc1db6a3f8ad28a",
+                "username": "",
+                "note": "Testing approximately 500 meter user",
+                "location": {
+                  "lat": 0.0035004499210486983,
+                  "lng": 0.0
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "unique_nearby_users": [
+        "6ac276c3dfc1db6a3f8ad278",
+        "6ac276c5dfc1db6a3f8ad284",
+        "6ac276c5dfc1db6a3f8ad28a"
+      ],
+      "last_nearby_users": [
+        {
+          "user_id": "6ac276c3dfc1db6a3f8ad278",
+          "username": "",
+          "note": "Testing center location user",
+          "location": {
+            "lat": 0.0,
+            "lng": 0.0
+          }
+        },
+        {
+          "user_id": "6ac276c5dfc1db6a3f8ad284",
+          "username": "",
+          "note": "Testing very close user",
+          "location": {
+            "lat": 0.0050010048473723145,
+            "lng": 0.004999637603759766
+          }
+        },
+        {
+          "user_id": "6ac276c5dfc1db6a3f8ad28a",
+          "username": "",
+          "note": "Testing approximately 500 meter user",
+          "location": {
+            "lat": 0.0035004499210486983,
+            "lng": 0.0
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,11 +1,15 @@
-import grpc
 import os
+import grpc
 
 from proto import notes_pb2
 from proto import notes_pb2_grpc
 
 
-NOTES_GRPC_URL = os.getenv("NOTES_GRPC_URL","localhost:50051")
+NOTES_GRPC_URL = os.getenv(
+    "NOTES_GRPC_URL",
+    "localhost:50051"
+)
+
 
 async def get_nearby_users(user_ids):
 
@@ -23,11 +27,12 @@ async def get_nearby_users(user_ids):
                 user_ids=user_ids
             )
         )
+
         return [
             {
                 "user_id": user.user_id,
                 "username": user.username,
-                "note": user.note
+                "note": user.note if user.note else None
             }
             for user in response.users
         ]
