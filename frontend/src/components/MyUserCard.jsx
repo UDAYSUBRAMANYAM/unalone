@@ -47,14 +47,11 @@ function MyUserCard({
     try {
       setSaving(true);
 
-      console.log("📝 SAVING NOTE USING PUT:", trimmedNote);
 
       await onUpdate(trimmedNote);
 
-      console.log("✅ NOTE SAVED");
 
     } catch (err) {
-      console.error("❌ NOTE SAVE ERROR:", err);
 
       setError(
         err?.message || "Could not save note."
@@ -81,17 +78,14 @@ function MyUserCard({
     try {
       setDeleting(true);
 
-      console.log("🗑️ DELETING NOTE");
 
       await onDelete();
 
-      console.log("✅ NOTE DELETED");
 
       // Clear textarea immediately
       setValue("");
 
     } catch (err) {
-      console.error("❌ NOTE DELETE ERROR:", err);
 
       setError(
         err?.message || "Could not delete note."

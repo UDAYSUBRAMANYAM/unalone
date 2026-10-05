@@ -21,10 +21,6 @@ class NotesService(
     ):
         user_ids = list(request.user_ids)
 
-        print("========================================")
-        print("📥 gRPC GetNearbyUsers")
-        print("Received user IDs:", user_ids)
-        print("========================================")
 
         if not user_ids:
             return notes_pb2.NearbyUsersResponse(
@@ -53,9 +49,7 @@ class NotesService(
                 object_ids.append(oid)
                 valid_str_ids.append(uid)
             except (InvalidId, TypeError):
-                print(f"⚠️  Skipping invalid ObjectId: {uid!r}")
 
-        print("Converted ObjectId list:", object_ids)
 
         # -----------------------------------------
         # GET NOTES
@@ -78,7 +72,6 @@ class NotesService(
             )
         )
 
-        print("📝 Note documents from MongoDB:", note_documents)
 
         # -----------------------------------------
         # GET PROFILES
@@ -101,7 +94,6 @@ class NotesService(
             )
         )
 
-        print("👤 Profile documents from MongoDB:", profile_documents)
 
         # -----------------------------------------
         # CREATE LOOKUPS (both keyed by plain string)
@@ -120,8 +112,6 @@ class NotesService(
             for document in profile_documents
         }
 
-        print("notes_by_user lookup:", notes_by_user)
-        print("usernames_by_user lookup:", usernames_by_user)
 
         # -----------------------------------------
         # BUILD gRPC RESPONSE
@@ -155,17 +145,13 @@ class NotesService(
         # DEBUG FINAL RESPONSE
         # -----------------------------------------
 
-        print("========================================")
-        print("📤 Final gRPC users:")
 
         for user in users:
-            print({
                 "user_id": user.user_id,
                 "username": user.username,
                 "note": user.note
             })
 
-        print("========================================")
 
         return notes_pb2.NearbyUsersResponse(
             users=users
@@ -187,7 +173,6 @@ async def serve():
 
     await server.start()
 
-    print("🚀 Notes gRPC server running on port 50051")
 
     await server.wait_for_termination()
 

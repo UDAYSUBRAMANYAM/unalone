@@ -50,11 +50,9 @@ def check_collections():
     for db_name, (db, collection_name) in required.items():
 
         if collection_name in db.list_collection_names():
-            print(
                 f"✓ {db_name}.{collection_name} exists"
             )
         else:
-            print(
                 f"✗ {db_name}.{collection_name} does not exist"
             )
 

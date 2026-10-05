@@ -48,21 +48,17 @@ function SignUp() {
         phoneNo: data.phoneNo,
       };
 
-      console.log("Signup data:", signupData);
 
       const response = await signUpUser(signupData);
 
-      console.log("Signup response:", response);
 
       // Store the token returned by the backend
       setToken(response.access_token);
 
-      console.log("Token stored in Zustand");
 
       // Signup successful → go to Login page
       navigate("/login");
     } catch (error) {
-      console.error("Signup failed:", error);
 
       setServererror(
         error.response?.data?.detail || "Signup failed"

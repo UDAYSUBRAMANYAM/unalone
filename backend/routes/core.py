@@ -20,14 +20,9 @@ async def nearby_location_ws(
     websocket: WebSocket,
     user_id: str = Depends(get_current_user_ws),
 ):
-    print("\n========================================")
-    print("WS HANDLER STARTED")
-    print("USER:", user_id)
-    print("========================================")
 
     await websocket.accept()
 
-    print("WS ACCEPTED FOR USER:", user_id)
 
     presence_key = f"{PRESENCE_PREFIX}{user_id}"
 
@@ -36,10 +31,8 @@ async def nearby_location_ws(
         # =========================================
         # REDIS CONNECTION CHECK
         # =========================================
-        print("🔥🔥🔥 NEW CORE.PY LOADED 🔥🔥🔥")
         redis_status = await redis_client.ping()
 
-        print("REDIS PING:", redis_status)
 
         # =========================================
         # CONTINUOUS LOCATION LOOP
@@ -47,10 +40,6 @@ async def nearby_location_ws(
 
         while True:
 
-            print("\n----------------------------------------")
-            print("WAITING FOR LOCATION")
-            print("USER:", user_id)
-            print("----------------------------------------")
 
             # =====================================
             # RECEIVE LOCATION
@@ -58,15 +47,11 @@ async def nearby_location_ws(
 
             data = await websocket.receive_json()
 
-            print("LOCATION RECEIVED:", data)
 
             lat = float(data["lat"])
             lng = float(data["lng"])
 
-            print("LAT:", lat)
-            print("LNG:", lng)
 
-            print("LOCATION UPDATE CYCLE START")
 
             # =====================================
             # REDIS CHECK
@@ -74,7 +59,6 @@ async def nearby_location_ws(
 
             redis_status = await redis_client.ping()
 
-            print("REDIS PING:", redis_status)
 
             # =====================================
             # STORE LOCATION
@@ -85,8 +69,6 @@ async def nearby_location_ws(
                 (lng, lat, str(user_id)),
             )
 
-            print("REDIS GEOADD RESULT:", geoadd_result)
-            print("LOCATION STORED FOR USER:", user_id)
 
             # =====================================
             # VERIFY LOCATION WAS STORED
@@ -97,7 +79,6 @@ async def nearby_location_ws(
                 str(user_id),
             )
 
-            print(
                 "REDIS GEOPOS FOR CURRENT USER:",
                 stored_position,
             )
@@ -112,7 +93,6 @@ async def nearby_location_ws(
                 ex=PRESENCE_TTL,
             )
 
-            print(
                 "PRESENCE UPDATED:",
                 user_id,
                 "TTL:",
@@ -127,7 +107,6 @@ async def nearby_location_ws(
                 presence_key
             )
 
-            print(
                 "PRESENCE TTL:",
                 presence_ttl,
             )
@@ -142,7 +121,6 @@ async def nearby_location_ws(
                 -1,
             )
 
-            print(
                 "ALL USERS CURRENTLY IN REDIS:",
                 all_location_users,
             )
@@ -159,7 +137,6 @@ async def nearby_location_ws(
                 unit="km",
             )
 
-            print(
                 "REDIS GEOSEARCH RESULT:",
                 nearby_users,
             )
@@ -174,7 +151,6 @@ async def nearby_location_ws(
                 if uid != str(user_id)
             ]
 
-            print(
                 "NEARBY USERS AFTER SELF FILTER:",
                 nearby_users,
             )
@@ -192,7 +168,6 @@ async def nearby_location_ws(
                     unit="m",
                 )
 
-                print(
                     "DISTANCE:",
                     user_id,
                     "<->",
@@ -206,7 +181,6 @@ async def nearby_location_ws(
             # GRPC
             # =====================================
 
-            print(
                 "CALLING GRPC WITH USER IDS:",
                 nearby_users,
             )
@@ -215,7 +189,6 @@ async def nearby_location_ws(
                 nearby_users
             )
 
-            print(
                 "GRPC RESPONSE:",
                 users,
             )
@@ -230,7 +203,6 @@ async def nearby_location_ws(
 
                 uid = str(user["user_id"])
 
-                print(
                     "\nPROCESSING USER:",
                     uid,
                 )
@@ -244,7 +216,6 @@ async def nearby_location_ws(
                     uid,
                 )
 
-                print(
                     "REDIS POSITION FOR",
                     uid,
                     ":",
@@ -252,7 +223,6 @@ async def nearby_location_ws(
                 )
 
                 if not position:
-                    print(
                         "NO REDIS POSITION FOUND FOR:",
                         uid,
                     )
@@ -278,7 +248,6 @@ async def nearby_location_ws(
                     nearby_lng - lng
                 )
 
-                print(
                     "RELATIVE LOCATION FOR",
                     uid,
                     ":",
@@ -307,7 +276,6 @@ async def nearby_location_ws(
             # =====================================
             # SEND RESPONSE
             # =====================================
-            print("\n========== REDIS DEBUG ==========")
 
             all_users = await redis_client.zrange(
                 LOCATION_KEY,
@@ -315,26 +283,20 @@ async def nearby_location_ws(
                 -1,
             )
 
-            print("ALL USERS IN GEOSET:")
             for uid in all_users:
-                print("  ", uid)
 
-            print("CURRENT USER:", user_id)
 
             current_position = await redis_client.geopos(
                 LOCATION_KEY,
                 str(user_id),
             )
 
-            print("CURRENT USER POSITION:", current_position)
 
-            print("=================================\n")
             response = {
                 "type": "nearby_users",
                 "users": result,
             }
 
-            print(
                 "\nSENDING TO FRONTEND:",
                 response,
             )
@@ -343,7 +305,6 @@ async def nearby_location_ws(
                 response
             )
 
-            print(
                 "LOCATION UPDATE CYCLE COMPLETE"
             )
 
@@ -353,10 +314,6 @@ async def nearby_location_ws(
 
     except WebSocketDisconnect:
 
-        print("\n========================================")
-        print("WEBSOCKET DISCONNECTED")
-        print("USER:", user_id)
-        print("========================================")
 
         await redis_client.delete(
             presence_key
@@ -367,7 +324,6 @@ async def nearby_location_ws(
             str(user_id),
         )
 
-        print(
             "REMOVED USER FROM REDIS:",
             user_id,
         )
@@ -378,11 +334,6 @@ async def nearby_location_ws(
 
     except Exception as e:
 
-        print("\n========================================")
-        print("WEBSOCKET ERROR")
-        print("USER:", user_id)
-        print("ERROR:", repr(e))
-        print("========================================")
 
         try:
             await websocket.close()

@@ -69,7 +69,6 @@ TEST_LOCATIONS = [
 # ============================================================
 
 def print_separator():
-    print("\n" + "=" * 80 + "\n")
 
 
 def generate_phone():
@@ -121,10 +120,6 @@ async def signup_user(client, location):
 
     print_separator()
 
-    print("SIGNING UP:", username)
-    print("LOCATION:", location["name"])
-    print("PHONE:", phone)
-    print("PAYLOAD:", payload)
 
     try:
 
@@ -133,19 +128,16 @@ async def signup_user(client, location):
             json=payload,
         )
 
-        print(
             "SIGNUP STATUS:",
             response.status_code,
         )
 
-        print(
             "SIGNUP RESPONSE:",
             response.text,
         )
 
         if response.status_code not in (200, 201):
 
-            print("❌ SIGNUP FAILED")
 
             return None
 
@@ -155,13 +147,11 @@ async def signup_user(client, location):
 
         if not access_token:
 
-            print(
                 "❌ SIGNUP SUCCESS BUT NO ACCESS TOKEN"
             )
 
             return None
 
-        print("✅ SIGNUP SUCCESS")
 
         return {
             "username": username,
@@ -177,7 +167,6 @@ async def signup_user(client, location):
 
     except Exception as e:
 
-        print(
             "❌ SIGNUP ERROR:",
             repr(e),
         )
@@ -193,7 +182,6 @@ async def login_user(client, user):
 
     print_separator()
 
-    print(
         "LOGGING IN:",
         user["username"],
     )
@@ -214,12 +202,10 @@ async def login_user(client, user):
             json=identifier_payload,
         )
 
-        print(
             "IDENTIFIER LOGIN STATUS:",
             response.status_code,
         )
 
-        print(
             "IDENTIFIER LOGIN RESPONSE:",
             response.text,
         )
@@ -232,7 +218,6 @@ async def login_user(client, user):
 
             if token:
 
-                print(
                     "✅ IDENTIFIER LOGIN SUCCESS"
                 )
 
@@ -242,12 +227,10 @@ async def login_user(client, user):
 
     except Exception as e:
 
-        print(
             "IDENTIFIER LOGIN ERROR:",
             repr(e),
         )
 
-    print(
         "⚠️ Identifier login failed."
     )
 
@@ -267,12 +250,10 @@ async def login_user(client, user):
             json=email_payload,
         )
 
-        print(
             "EMAIL LOGIN STATUS:",
             response.status_code,
         )
 
-        print(
             "EMAIL LOGIN RESPONSE:",
             response.text,
         )
@@ -285,7 +266,6 @@ async def login_user(client, user):
 
             if token:
 
-                print(
                     "✅ EMAIL LOGIN SUCCESS"
                 )
 
@@ -295,12 +275,10 @@ async def login_user(client, user):
 
     except Exception as e:
 
-        print(
             "EMAIL LOGIN ERROR:",
             repr(e),
         )
 
-    print("❌ LOGIN FAILED")
 
     return None
 
@@ -320,12 +298,10 @@ async def connect_user(user):
 
     print_separator()
 
-    print(
         "CONNECTING WEBSOCKET:",
         user["username"],
     )
 
-    print(
         "LOCATION:",
         user["location_name"],
     )
@@ -338,7 +314,6 @@ async def connect_user(user):
             ping_timeout=20,
         )
 
-        print(
             "✅ WEBSOCKET CONNECTED:",
             user["username"],
         )
@@ -347,7 +322,6 @@ async def connect_user(user):
 
     except Exception as e:
 
-        print(
             "❌ WEBSOCKET CONNECTION FAILED:",
             user["username"],
             repr(e),
@@ -370,7 +344,6 @@ async def send_location(
         "lng": user["longitude"],
     }
 
-    print(
         "📤 SENDING LOCATION:",
         user["username"],
         payload,
@@ -410,17 +383,14 @@ async def receive_results(
 
             print_separator()
 
-            print(
                 "📥 RESPONSE:",
                 user["username"],
             )
 
-            print(
                 "TIME:",
                 timestamp,
             )
 
-            print(
                 json.dumps(
                     data,
                     indent=2,
@@ -433,7 +403,6 @@ async def receive_results(
 
             if data.get("type") != "nearby_users":
 
-                print(
                     "⚠️ Unexpected response type:",
                     data.get("type"),
                 )
@@ -468,39 +437,32 @@ async def receive_results(
 
             if not nearby_users:
 
-                print(
                     "👥 NO NEARBY USERS"
                 )
 
             else:
 
-                print(
                     "👥 NEARBY USERS:"
                 )
 
                 for nearby in nearby_users:
 
-                    print(
                         "   USER:",
                         nearby.get("username"),
                     )
 
-                    print(
                         "   ID:",
                         nearby.get("user_id"),
                     )
 
-                    print(
                         "   NOTE:",
                         nearby.get("note"),
                     )
 
-                    print(
                         "   RELATIVE LOCATION:",
                         nearby.get("location"),
                     )
 
-                    print()
 
         except asyncio.TimeoutError:
 
@@ -508,7 +470,6 @@ async def receive_results(
 
         except websockets.exceptions.ConnectionClosed:
 
-            print(
                 "🔴 WEBSOCKET CLOSED:",
                 user["username"],
             )
@@ -517,7 +478,6 @@ async def receive_results(
 
         except Exception as e:
 
-            print(
                 "❌ RECEIVE ERROR:",
                 user["username"],
                 repr(e),
@@ -577,7 +537,6 @@ async def run_user(
 
                 except Exception as e:
 
-                    print(
                         "❌ LOCATION SEND ERROR:",
                         user["username"],
                         repr(e),
@@ -605,7 +564,6 @@ async def run_user(
 
     except Exception as e:
 
-        print(
             "❌ USER TEST ERROR:",
             user["username"],
             repr(e),
@@ -618,7 +576,6 @@ async def run_user(
         except Exception:
             pass
 
-        print(
             "🔴 CLOSED:",
             user["username"],
         )
@@ -635,7 +592,6 @@ def analyze_results(
 
     print_separator()
 
-    print(
         "RESULT ANALYSIS"
     )
 
@@ -645,12 +601,10 @@ def analyze_results(
     # Basic statistics
     # --------------------------------------------------------
 
-    print(
         "TOTAL USERS:",
         len(users),
     )
 
-    print(
         "TOTAL RESPONSE RECORDS:",
         len(results),
     )
@@ -687,24 +641,20 @@ def analyze_results(
 
         print_separator()
 
-        print(
             "REQUESTING USER:",
             username,
         )
 
-        print(
             "TEST LOCATION:",
             user["location_name"],
         )
 
-        print(
             "RESPONSES RECEIVED:",
             len(user_records),
         )
 
         if not user_records:
 
-            print(
                 "❌ NO RESPONSES"
             )
 
@@ -717,28 +667,24 @@ def analyze_results(
             "nearby_users"
         ]
 
-        print(
             "LAST RESPONSE USERS:",
             len(nearby),
         )
 
         for nearby_user in nearby:
 
-            print(
                 "   👤",
                 nearby_user.get(
                     "username"
                 ),
             )
 
-            print(
                 "      NOTE:",
                 nearby_user.get(
                     "note"
                 ),
             )
 
-            print(
                 "      LOCATION:",
                 nearby_user.get(
                     "location"
@@ -812,11 +758,9 @@ def save_results(
 
     print_separator()
 
-    print(
         "✅ RESULTS SAVED TO:"
     )
 
-    print(
         "location_test_results.json"
     )
 
@@ -829,23 +773,18 @@ async def main():
 
     print_separator()
 
-    print(
         "LOKOL LOCATION + GRPC TEST"
     )
 
-    print(
         "NO NOTES CREATED"
     )
 
-    print(
         "5 USERS"
     )
 
-    print(
         "5 DIFFERENT LOCATION CASES"
     )
 
-    print(
         f"RUNNING FOR {TEST_DURATION_SECONDS} SECONDS"
     )
 
@@ -857,7 +796,6 @@ async def main():
     # CREATE USERS
     # ========================================================
 
-    print(
         "CREATING 5 TEST USERS"
     )
 
@@ -874,7 +812,6 @@ async def main():
 
             if user is None:
 
-                print(
                     "❌ USER CREATION FAILED"
                 )
 
@@ -893,7 +830,6 @@ async def main():
 
     print_separator()
 
-    print(
         "USERS CREATED:",
         len(users),
     )
@@ -903,7 +839,6 @@ async def main():
         start=1,
     ):
 
-        print(
             f"user{index} | "
             f"{user['username']} | "
             f"{user['location_name']} | "
@@ -915,12 +850,10 @@ async def main():
 
         print_separator()
 
-        print(
             "❌ Expected 5 users "
             f"but only got {len(users)}"
         )
 
-        print(
             "Test cannot continue."
         )
 
@@ -932,7 +865,6 @@ async def main():
 
     print_separator()
 
-    print(
         "CONNECTING ALL 5 USERS"
     )
 
@@ -966,11 +898,9 @@ async def main():
 
     print_separator()
 
-    print(
         "🚀 TEST STARTED"
     )
 
-    print(
         f"⏱️ Running for "
         f"{TEST_DURATION_SECONDS} seconds..."
     )
@@ -991,7 +921,6 @@ async def main():
 
     print_separator()
 
-    print(
         "STOPPING TEST"
     )
 
@@ -1024,21 +953,17 @@ async def main():
 
     print_separator()
 
-    print(
         "✅ TEST COMPLETE"
     )
 
-    print(
         "Users tested:",
         len(users),
     )
 
-    print(
         "Responses collected:",
         len(results),
     )
 
-    print(
         "Output:",
         "location_test_results.json",
     )

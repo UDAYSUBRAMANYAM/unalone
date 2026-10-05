@@ -13,9 +13,6 @@ api_key = os.getenv("api_key")
 api_secret = os.getenv("api_secret_key")
 
 
-print("Cloud:", cloud_name)
-print("API Key exists:", bool(api_key))
-print("API Secret exists:", bool(api_secret))
 
 
 if not cloud_name or not api_key or not api_secret:

@@ -155,7 +155,6 @@ function LocationPage() {
         return true;
 
       } catch (err) {
-        console.error("NOTE LOAD ERROR:", err);
 
         if (!cancelled) {
           setError("Could not check your note.");
@@ -223,11 +222,6 @@ function LocationPage() {
           (locationError) => {
             if (cancelled) return;
 
-            console.error(
-              "LOCATION ERROR:",
-              locationError
-            );
-
             setError(
               `${locationError.code}: ${locationError.message}`
             );
@@ -273,10 +267,7 @@ function LocationPage() {
           }
 
         } catch (err) {
-          console.error(
-            "INVALID WEBSOCKET RESPONSE:",
-            err
-          );
+          // invalid websocket response
         }
       };
 
@@ -288,7 +279,6 @@ function LocationPage() {
       ws.onerror = (event) => {
         if (cancelled) return;
 
-        console.error("WEBSOCKET ERROR:", event);
 
         setError("WebSocket connection error.");
         setStatus("Connection error");
@@ -299,13 +289,7 @@ function LocationPage() {
       // WEBSOCKET CLOSED
       // ==================================================
 
-      ws.onclose = (event) => {
-        console.log(
-          "WEBSOCKET DISCONNECTED:",
-          event.code,
-          event.reason
-        );
-
+      ws.onclose = () => {
         if (!cancelled) {
           setStatus(
             "Location service disconnected"

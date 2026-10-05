@@ -16,9 +16,6 @@ def write_note(
     note: UserNote,
     user_id=Depends(get_current_user)
 ):
-    print("📝 POST /notes/me")
-    print("JWT user_id:", user_id)
-    print("Request body:", note.model_dump())
 
     existing_note = notes.find_one({
         "user_id": user_id
@@ -35,7 +32,6 @@ def write_note(
         "note": note.note
     })
 
-    print("✅ Note created:", result.inserted_id)
 
     return {
         "message": "Note added successfully",
@@ -48,8 +44,6 @@ def write_note(
 def get_my_note(
     user_id=Depends(get_current_user)
 ):
-    print("📝 GET /notes/my_note")
-    print("JWT user_id:", user_id)
 
     existing_note = notes.find_one({
         "user_id": user_id
@@ -72,9 +66,6 @@ def update_note(
     note: UserNote,
     user_id=Depends(get_current_user)
 ):
-    print("📝 PUT /notes/me")
-    print("JWT user_id:", user_id)
-    print("New note:", note.note)
 
     result = notes.update_one(
         {
@@ -104,8 +95,6 @@ def update_note(
 def delete_my_note(
     user_id=Depends(get_current_user)
 ):
-    print("🗑️ DELETE /notes/delete")
-    print("JWT user_id:", user_id)
 
     result = notes.update_one(
         {

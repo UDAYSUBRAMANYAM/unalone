@@ -85,7 +85,6 @@ function ProfilePage() {
 
       const data = await getMyProfile(token);
 
-      console.log("👤 PROFILE:", data);
 
       setProfile(data);
 
@@ -104,11 +103,6 @@ function ProfilePage() {
       });
 
     } catch (err) {
-
-      console.error(
-        "❌ PROFILE LOAD ERROR:",
-        err
-      );
 
       setError(
         err.message || "Failed to load profile."
@@ -157,11 +151,6 @@ function ProfilePage() {
         form
       );
 
-      console.log(
-        "✅ PROFILE UPDATED:",
-        data
-      );
-
       setMessage(
         "Profile updated successfully."
       );
@@ -170,11 +159,6 @@ function ProfilePage() {
       await loadProfile();
 
     } catch (err) {
-
-      console.error(
-        "❌ PROFILE UPDATE ERROR:",
-        err
-      );
 
       setError(
         err.message ||
@@ -213,11 +197,6 @@ function ProfilePage() {
           file
         );
 
-      console.log(
-        "✅ PHOTO UPLOADED:",
-        data
-      );
-
       setMessage(
         "Profile picture updated."
       );
@@ -225,11 +204,6 @@ function ProfilePage() {
       await loadProfile();
 
     } catch (err) {
-
-      console.error(
-        "❌ PHOTO UPLOAD ERROR:",
-        err
-      );
 
       setError(
         err.message ||
@@ -268,11 +242,6 @@ function ProfilePage() {
 
     } catch (err) {
 
-      console.error(
-        "❌ PHOTO DELETE ERROR:",
-        err
-      );
-
       setError(
         err.message ||
         "Failed to delete photo."
@@ -308,10 +277,6 @@ function ProfilePage() {
 
       await deleteMyProfile(token);
 
-      console.log(
-        "✅ PROFILE DELETED"
-      );
-
       // Clear authentication
       useAuthStore.setState({
         token: null,
@@ -321,11 +286,6 @@ function ProfilePage() {
       navigate("/login");
 
     } catch (err) {
-
-      console.error(
-        "❌ PROFILE DELETE ERROR:",
-        err
-      );
 
       setError(
         err.message ||

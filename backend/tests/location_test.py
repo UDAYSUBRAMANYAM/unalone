@@ -89,7 +89,6 @@ TEST_NOTES = [
 # ============================================================
 
 def separator():
-    print("\n" + "=" * 80 + "\n")
 
 
 def generate_phone():
@@ -142,7 +141,6 @@ def extract_user_id_from_jwt(token):
         return str(payload_data["sub"])
 
     except Exception as e:
-        print(
             "❌ Could not extract user_id from JWT:",
             repr(e),
         )
@@ -172,10 +170,6 @@ async def signup_user(client, location):
 
     separator()
 
-    print("SIGNING UP:", username)
-    print("LOCATION:", location["name"])
-    print("PHONE:", phone_number)
-    print("PAYLOAD:", payload)
 
     try:
 
@@ -185,19 +179,16 @@ async def signup_user(client, location):
             timeout=15,
         )
 
-        print(
             "SIGNUP STATUS:",
             response.status_code,
         )
 
-        print(
             "SIGNUP RESPONSE:",
             response.text,
         )
 
         if response.status_code not in (200, 201):
 
-            print("❌ SIGNUP FAILED")
 
             return None
 
@@ -209,18 +200,15 @@ async def signup_user(client, location):
 
         if not access_token:
 
-            print(
                 "❌ SIGNUP SUCCEEDED "
                 "BUT NO ACCESS TOKEN"
             )
 
             return None
 
-        print(
             "✅ SIGNUP SUCCESS"
         )
 
-        print(
             "✅ ACCESS TOKEN RECEIVED "
             "DIRECTLY FROM SIGNUP"
         )
@@ -231,14 +219,12 @@ async def signup_user(client, location):
 
         if not user_id:
 
-            print(
                 "❌ Could not obtain user_id "
                 "from access token"
             )
 
             return None
 
-        print(
             "USER ID:",
             user_id,
         )
@@ -263,7 +249,6 @@ async def signup_user(client, location):
 
     except Exception as e:
 
-        print(
             "❌ SIGNUP ERROR:",
             repr(e),
         )
@@ -301,17 +286,14 @@ async def create_note(client, user, note_text):
 
     separator()
 
-    print(
         "WRITING NOTE FOR:",
         user["username"],
     )
 
-    print(
         "USER ID:",
         user["user_id"],
     )
 
-    print(
         "NOTE:",
         note_text,
     )
@@ -328,12 +310,10 @@ async def create_note(client, user, note_text):
         "note": note_text,
     }
 
-    print(
         "NOTE PAYLOAD:",
         payload,
     )
 
-    print(
         "AUTHORIZATION:",
         "Bearer <JWT>",
     )
@@ -351,17 +331,14 @@ async def create_note(client, user, note_text):
             timeout=15,
         )
 
-        print(
             "NOTE ENDPOINT:",
             "/notes/me",
         )
 
-        print(
             "NOTE STATUS:",
             response.status_code,
         )
 
-        print(
             "NOTE RESPONSE:",
             response.text,
         )
@@ -371,7 +348,6 @@ async def create_note(client, user, note_text):
             201,
         ):
 
-            print(
                 "✅ NOTE CREATED:"
                 ,
                 user["username"],
@@ -381,7 +357,6 @@ async def create_note(client, user, note_text):
 
             return True
 
-        print(
             "❌ NOTE CREATION FAILED"
         )
 
@@ -389,7 +364,6 @@ async def create_note(client, user, note_text):
 
     except Exception as e:
 
-        print(
             "❌ NOTE REQUEST ERROR:",
             repr(e),
         )
@@ -496,31 +470,25 @@ async def websocket_test(
 
     separator()
 
-    print(
         "STARTING WEBSOCKET"
     )
 
-    print(
         "USER:",
         username,
     )
 
-    print(
         "LOCATION:",
         user["location_name"],
     )
 
-    print(
         "LAT:",
         latitude,
     )
 
-    print(
         "LNG:",
         longitude,
     )
 
-    print(
         "URL:",
         WS_URL,
     )
@@ -541,7 +509,6 @@ async def websocket_test(
             max_size=10 * 1024 * 1024,
         ) as websocket:
 
-            print(
                 "✅ WEBSOCKET CONNECTED:",
                 username,
             )
@@ -580,7 +547,6 @@ async def websocket_test(
                         "location_sends"
                     ] += 1
 
-                    print(
                         f"[{username}] "
                         f"📤 LOCATION SENT "
                         f"t={elapsed:.2f}s"
@@ -697,7 +663,6 @@ async def websocket_test(
                         "records"
                     ].append(record)
 
-                    print(
                         f"[{username}] "
                         f"📥 RECEIVED "
                         f"{len(nearby_users)} USERS"
@@ -706,7 +671,6 @@ async def websocket_test(
                     # Print actual nearby users
                     if nearby_users:
 
-                        print(
                             json.dumps(
                                 nearby_users,
                                 indent=2,
@@ -724,7 +688,6 @@ async def websocket_test(
 
                 except websockets.ConnectionClosed as e:
 
-                    print(
                         f"[{username}] "
                         f"❌ CONNECTION CLOSED:",
                         e,
@@ -738,7 +701,6 @@ async def websocket_test(
 
                 except json.JSONDecodeError as e:
 
-                    print(
                         f"[{username}] "
                         f"❌ INVALID JSON:",
                         repr(e),
@@ -750,7 +712,6 @@ async def websocket_test(
 
     except Exception as e:
 
-        print(
             f"[{username}] "
             f"❌ WEBSOCKET ERROR:",
             repr(e),
@@ -760,7 +721,6 @@ async def websocket_test(
             "errors"
         ] += 1
 
-    print(
         f"🔴 TEST FINISHED FOR {username}"
     )
 
@@ -816,20 +776,17 @@ async def main():
 
     separator()
 
-    print(
         "LOKOL LOCATION + NOTES "
         "WEBSOCKET TEST"
     )
 
     separator()
 
-    print(
         "TEST DURATION:",
         TEST_DURATION,
         "seconds",
     )
 
-    print(
         "LOCATION SEND INTERVAL:",
         LOCATION_SEND_INTERVAL,
         "seconds",
@@ -843,7 +800,6 @@ async def main():
     # CREATE 5 USERS
     # ========================================================
 
-    print(
         "CREATING 5 TEST USERS"
     )
 
@@ -864,7 +820,6 @@ async def main():
 
             else:
 
-                print(
                     "❌ USER CREATION FAILED "
                     "FOR:",
                     location["name"],
@@ -872,20 +827,17 @@ async def main():
 
     separator()
 
-    print(
         "USERS CREATED:",
         len(users),
     )
 
     if len(users) != 5:
 
-        print(
             "❌ Expected 5 users "
             "but got:",
             len(users),
         )
 
-        print(
             "Test cannot continue."
         )
 
@@ -900,7 +852,6 @@ async def main():
         start=1,
     ):
 
-        print(
             f"user{index} | "
             f"{user['username']} | "
             f"{user['user_id']} | "
@@ -915,7 +866,6 @@ async def main():
 
     separator()
 
-    print(
         "WRITING NOTES FOR ALL 5 USERS"
     )
 
@@ -943,18 +893,15 @@ async def main():
 
     separator()
 
-    print(
         "NOTES WRITTEN:",
         f"{notes_success} / {len(users)}",
     )
 
     if notes_success != 5:
 
-        print(
             "❌ NOT ALL NOTES WERE CREATED."
         )
 
-        print(
             "The location test will NOT "
             "continue because we need "
             "notes available for the "
@@ -963,7 +910,6 @@ async def main():
 
         return
 
-    print(
         "✅ ALL 5 NOTES CREATED"
     )
 
@@ -973,7 +919,6 @@ async def main():
 
     separator()
 
-    print(
         "EXPECTED DISTANCES"
     )
 
@@ -987,7 +932,6 @@ async def main():
 
     for item in expected_distances:
 
-        print(
             f"{item['from_user']} "
             f"-> "
             f"{item['to_user']} : "
@@ -1002,17 +946,14 @@ async def main():
 
     separator()
 
-    print(
         "STARTING 5 WEBSOCKET CONNECTIONS"
     )
 
-    print(
         "TEST WILL RUN FOR:",
         TEST_DURATION,
         "SECONDS",
     )
 
-    print(
         "LOCATION SEND INTERVAL:",
         LOCATION_SEND_INTERVAL,
         "SECONDS",
@@ -1048,7 +989,6 @@ async def main():
 
     separator()
 
-    print(
         "FINAL TEST SUMMARY"
     )
 
@@ -1065,58 +1005,48 @@ async def main():
         if not result:
             continue
 
-        print(
             "\nUSER:",
             username,
         )
 
-        print(
             "USER ID:",
             user["user_id"],
         )
 
-        print(
             "LOCATION:",
             user["location_name"],
         )
 
-        print(
             "LAT:",
             user["latitude"],
         )
 
-        print(
             "LNG:",
             user["longitude"],
         )
 
-        print(
             "NOTE:",
             user["note"],
         )
 
-        print(
             "LOCATION SENDS:",
             result[
                 "location_sends"
             ],
         )
 
-        print(
             "RESPONSES:",
             result[
                 "responses"
             ],
         )
 
-        print(
             "ERRORS:",
             result[
                 "errors"
             ],
         )
 
-        print(
             "UNIQUE NEARBY USERS:",
             len(
                 result[
@@ -1129,7 +1059,6 @@ async def main():
             "unique_nearby_users"
         ]:
 
-            print(
                 "NEARBY USER IDS:",
                 result[
                     "unique_nearby_users"
@@ -1138,11 +1067,9 @@ async def main():
 
         else:
 
-            print(
                 "NEARBY USER IDS: []"
             )
 
-        print(
             "LAST RESPONSE:"
         )
 
@@ -1150,7 +1077,6 @@ async def main():
             "last_nearby_users"
         ]:
 
-            print(
                 json.dumps(
                     result[
                         "last_nearby_users"
@@ -1161,7 +1087,6 @@ async def main():
 
         else:
 
-            print(
                 "[]"
             )
 
@@ -1232,17 +1157,14 @@ async def main():
 
     separator()
 
-    print(
         "✅ RESULTS SAVED TO:"
     )
 
-    print(
         RESULT_FILE
     )
 
     separator()
 
-    print(
         "🏁 TEST COMPLETE"
     )
 
@@ -1263,6 +1185,5 @@ if __name__ == "__main__":
 
     except KeyboardInterrupt:
 
-        print(
             "\n❌ TEST INTERRUPTED"
         )

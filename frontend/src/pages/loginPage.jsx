@@ -74,17 +74,14 @@ function LoginPage() {
     try {
       const response = await loginUser(loginData);
 
-      console.log("Login response:", response);
 
       // Store JWT
       setToken(response.access_token);
 
-      console.log("Token stored");
 
       // Go directly to landing page
       navigate("/landing_page", { replace: true });
     } catch (error) {
-      console.error("Login failed:", error);
 
       setServererror(
         error.response?.data?.detail || "Login failed"
